@@ -12,6 +12,7 @@ import com.saint.aoyangbuulid.login.Login_Activity;
 
 /**
  * Created by zzh on 15-11-9.
+ * 777777777777777
  */
 public class Choice_Sign_Activity extends Activity  implements View.OnClickListener{
     String role=null;
@@ -19,6 +20,8 @@ public class Choice_Sign_Activity extends Activity  implements View.OnClickListe
             ,imageButton_enterprise
             ,imageButton_login
             ,imageButton_exit;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
