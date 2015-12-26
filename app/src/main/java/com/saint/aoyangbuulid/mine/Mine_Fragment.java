@@ -102,10 +102,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 }
             });
         }
-
         sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-
-
         text_company.setText(sp.getString("company_name","创建/加入公司"));
 
 
@@ -157,7 +154,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 SetDialog();
                 break;
             case R.id.imageview_round:
-                    showDialog();
+                showDialog();
                 break;
             case R.id.text_company_name:
                 sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);

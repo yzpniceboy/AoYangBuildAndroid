@@ -8,6 +8,9 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
@@ -182,8 +185,12 @@ public class MipcaActivityCapture extends BaseActivity implements SurfaceHolder.
     }
     private static final long VIBRATE_DURATION = 200L;
 
+    /**
+     * zhushi
+     */
     private void playBeepSoundAndVibrate() {
         if (playBeep && mediaPlayer != null) {
+
             mediaPlayer.start();
         }
         if (vibrate) {
@@ -199,5 +206,20 @@ public class MipcaActivityCapture extends BaseActivity implements SurfaceHolder.
 
     public MediaPlayer.OnCompletionListener getBeepListener() {
         return beepListener;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            MipcaActivityCapture.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

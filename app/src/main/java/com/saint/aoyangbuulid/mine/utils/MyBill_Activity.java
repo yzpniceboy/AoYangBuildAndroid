@@ -2,6 +2,9 @@ package com.saint.aoyangbuulid.mine.utils;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -42,5 +45,19 @@ public class MyBill_Activity extends BaseActivity {
                 text.setText(response+"");
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            MyBill_Activity.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

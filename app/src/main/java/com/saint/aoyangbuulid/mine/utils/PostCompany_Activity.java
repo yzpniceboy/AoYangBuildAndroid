@@ -2,6 +2,9 @@ package com.saint.aoyangbuulid.mine.utils;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +56,7 @@ public class PostCompany_Activity extends BaseActivity implements View.OnClickLi
         client.setBasicAuth(p, w, AuthScope.ANY);
         RequestParams params=new RequestParams();
         SharedPreferences.Editor editor=sp.edit();
-        editor.putString("company_name",text_company.getText().toString());
+        editor.putString("company_name", text_company.getText().toString());
         editor.commit();
         params.add("name",text_company.getText().toString());
         params.add("phone",text_phone.getText().toString());
@@ -66,6 +69,20 @@ public class PostCompany_Activity extends BaseActivity implements View.OnClickLi
 
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            PostCompany_Activity.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

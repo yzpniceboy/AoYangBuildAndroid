@@ -3,6 +3,9 @@ package com.saint.aoyangbuulid.mine.utils;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
@@ -86,5 +89,19 @@ public class MyOrder_Activity  extends BaseActivity  {
             map.put("people","未设置");
             list.add(map);
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            MyOrder_Activity.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
