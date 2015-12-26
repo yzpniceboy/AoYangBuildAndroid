@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <com.saint.aoyangbuulid.mine.utils.XCRoundImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_company"
+        android:src="@mipmap/image"/>
+    <TextView
+        android:hint="公司名字"
+        android:textSize="18sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#0099cc"
+        android:id="@+id/text_company_name"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_alignTop="@+id/image_company"
+        android:layout_toRightOf="@+id/image_company"
+        android:layout_toEndOf="@+id/image_company" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="电话："
+        android:layout_alignTop="@+id/text_compnay_phone"
+        android:layout_alignLeft="@+id/text_company_name"
+        android:layout_alignStart="@+id/text_company_name"
+        android:id="@+id/textView3" />
+    <TextView
+        android:textSize="15sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_compnay_phone"
+        android:layout_alignBottom="@+id/image_company"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+</RelativeLayout>

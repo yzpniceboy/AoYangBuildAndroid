@@ -84,35 +84,40 @@ public class Select_Company_Activity extends BaseActivity {
         view_company.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListView list_company= (ListView) parent;
-                Map<String,Object> map= (Map<String, Object>) list_company.getItemAtPosition(position);
-                company_name= (String) map.get("name");
-                final int company_data=(int)map.get("company_id");
-                final CheckBox ck= (CheckBox) view.findViewById(R.id.ck_company);
+                ListView list_company = (ListView) parent;
+                Map<String, Object> map = (Map<String, Object>) list_company.getItemAtPosition(position);
+                company_name = (String) map.get("name");
+                final int company_data = (int) map.get("company_id");
+                final CheckBox ck = (CheckBox) view.findViewById(R.id.ck_company);
                 ck.setChecked(true);
-                View view_info= LayoutInflater.from(Select_Company_Activity.this).inflate(R.layout.join_info,null);
-                final EditText et_data= (EditText) view_info.findViewById(R.id.et_data);
-                text_data=et_data.getText().toString();
+                View view_info = LayoutInflater.from(Select_Company_Activity.this).inflate(R.layout.join_info, null);
+                final EditText et_data = (EditText) view_info.findViewById(R.id.et_data);
+                text_data = et_data.getText().toString();
 
-                AlertDialog.Builder dialog=new AlertDialog.Builder(Select_Company_Activity.this)
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Select_Company_Activity.this)
                         .setTitle("申请")
-                        .setMessage("申请加入"+company_name+"?")
+                        .setMessage("申请加入" + company_name + "?")
                         .setView(view_info);
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                         //申请加入公司
-                        String url=Constant.SERVER_URL+"/wp-json/pods/application";
-                        AsyncHttpClient client=new AsyncHttpClient();
-                        RequestParams params =new RequestParams();
-                        SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
-                        client.setBasicAuth(sp.getString("phone",""),sp.getString("passed",""), AuthScope.ANY);
+                        String url = Constant.SERVER_URL + "/wp-json/pods/application";
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        RequestParams params = new RequestParams();
+                        SharedPreferences sp = getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
+                        client.setBasicAuth(sp.getString("phone", ""), sp.getString("passed", ""), AuthScope.ANY);
                         params.add("company", String.valueOf(company_data));
                         params.add("user", sp.getString("user_id", ""));
-                        params.add("introduction",text_data);
+                        params.add("introduction", text_data);
                         client.post(url, params, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
 
+
+                            }
                         });
 
                     }
@@ -138,11 +143,18 @@ public class Select_Company_Activity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.add_company){
-            Intent intent=new Intent();
-            intent.setClass(Select_Company_Activity.this,PostCompany_Activity.class);
-            startActivity(intent);
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Select_Company_Activity.this.finish();
+                break;
+            case R.id.add_company:
+                Intent intent=new Intent();
+                intent.setClass(Select_Company_Activity.this,PostCompany_Activity.class);
+                startActivity(intent);
+                break;
         }
+
+
         return super.onOptionsItemSelected(item);
     }
 

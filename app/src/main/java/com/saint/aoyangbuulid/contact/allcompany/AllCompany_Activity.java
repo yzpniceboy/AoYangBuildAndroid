@@ -118,14 +118,25 @@ public class AllCompany_Activity extends BaseActivity {
                         JSONObject object = new JSONObject(v);
                         String name = object.optString("name");
                         int company_id = object.optInt("id");
-//                        SharedPreferences.Editor editor = sp.edit();
-//                        editor.putString("contact_company_id", company_id + "");
-//                        editor.commit();
-                        Map<String, Object> map = new HashMap<String, Object>();
-                        map.put("name", name);
-                        map.put("company_id", company_id);
-                        list.add(map);
+                        String phone=object.optString("phone");
+                        if (!phone.equals(JSONObject.NULL)){
+                            Map<String, Object> map = new HashMap<String, Object>();
+                            map.put("name", name);
+                            map.put("phone",phone);
+                            map.put("company_id", company_id);
+                            list.add(map);
+                        }else {
+                            phone="暂未设置";
+                            Map<String, Object> map = new HashMap<String, Object>();
+                            map.put("name", name);
+                            map.put("phone",phone);
+                            map.put("company_id", company_id);
+                            list.add(map);
+                        }
                         adapter.notifyDataSetChanged();
+
+
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

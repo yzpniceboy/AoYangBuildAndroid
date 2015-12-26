@@ -6,9 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import com.saint.aoyangbuulid.R;
-
+import com.saint.aoyangbuulid.mine.utils.XCRoundImageView;
 import java.util.List;
 import java.util.Map;
 
@@ -42,18 +41,23 @@ public class AllCompany_Adapter extends BaseAdapter {
         Holder holder=null;
         if (convertView==null){
             holder=new Holder();
-            convertView= LayoutInflater.from(context).inflate(R.layout.myview_layout,null);
-            holder.text_company= (TextView) convertView.findViewById(R.id.text_along);
+            convertView= LayoutInflater.from(context).inflate(R.layout.companylist_layout,null);
+            holder.text_company_name= (TextView) convertView.findViewById(R.id.text_company_name);
+            holder.text_company_phone= (TextView) convertView.findViewById(R.id.text_compnay_phone);
+            holder.image_company= (XCRoundImageView) convertView.findViewById(R.id.image_company);
             convertView.setTag(holder);
         }else {
             holder= (Holder) convertView.getTag();
         }
         holder.id= (int) list.get(position).get("company_id");
-        holder.text_company.setText(String.valueOf((list.get(position)).get("name")));
+        holder.text_company_name.setText(String.valueOf((list.get(position)).get("name")));
+        holder.image_company.setImageResource(R.mipmap.image);
+        holder.text_company_phone.setText(String.valueOf(list.get(position).get("phone")));
         return convertView;
     }
     public class Holder{
         int  id;
-        TextView text_company;
+        TextView text_company_name,text_company_phone;
+        XCRoundImageView image_company;
     }
 }

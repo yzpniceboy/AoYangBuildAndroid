@@ -42,7 +42,7 @@ import cz.msebera.android.httpclient.auth.AuthScope;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public class Contact_Fragment extends Fragment  {
-        private ImageButton button_navi;
+    private ImageButton button_navi;
     private XListView view_list;
     public CompanyMember_Adapter adapter;
     private static final  int UPDATA=1;
