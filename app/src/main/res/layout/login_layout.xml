@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/backgroundlogin">
+    <ImageButton
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_exitone"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <EditText
+        android:maxLines="1"
+        android:inputType="phone"
+        android:hint="  输入手机号"
+        android:textColorHint="@android:color/white"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/enter"
+        android:layout_marginTop="130dp"
+        android:id="@+id/edittext_phonenumber"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/imagebutton_login"
+        android:layout_alignEnd="@+id/imagebutton_login" />
+    <EditText
+        android:maxLines="1"
+        android:inputType="textPassword"
+        android:layout_width="261dp"
+        android:hint="  密码"
+        android:textColorHint="@android:color/white"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/passed"
+        android:id="@+id/edittext_passed"
+        android:layout_below="@+id/edittext_phonenumber"
+        android:layout_alignLeft="@+id/edittext_phonenumber"
+        android:layout_alignStart="@+id/edittext_phonenumber" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:background="@mipmap/login_button_not"
+        android:layout_below="@+id/edittext_passed"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imagebutton_login" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="注册"
+        android:background="#00000000"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_below="@+id/imagebutton_login"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp"
+        android:id="@+id/button_sign" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码"
+        android:id="@+id/button_forgetpassed"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"
+        android:layout_alignTop="@+id/button_sign"
+        android:layout_alignRight="@+id/imagebutton_login"
+        android:layout_alignEnd="@+id/imagebutton_login" />
+
+</RelativeLayout>

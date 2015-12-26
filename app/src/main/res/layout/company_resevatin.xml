@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="@mipmap/background"
+     android:paddingBottom="16dp"
+     android:paddingLeft="16dp"
+     android:paddingTop="16dp"
+     android:paddingRight="16dp"
+     android:weightSum="1">
+
+    <TextView
+        android:paddingTop="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="缴费单位"
+        android:textStyle="bold"
+        android:id="@+id/text_company_of_charge"
+        android:layout_alignBottom="@+id/textview_company"
+        android:layout_toLeftOf="@+id/imagebutton_next"
+        android:layout_toStartOf="@+id/imagebutton_next" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_company"
+        android:layout_marginTop="84dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#82858b"
+        android:id="@+id/view_line5"
+        android:layout_below="@+id/text_company_of_charge"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:textStyle="bold"
+        android:paddingTop="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="户号"
+        android:id="@+id/text_number"
+        android:layout_alignBottom="@+id/textview_rooms"
+        android:layout_alignLeft="@+id/text_company_of_charge"
+        android:layout_alignStart="@+id/text_company_of_charge" />
+    <TextView
+        android:hint="查看纸质账单"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_rooms"
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/view_line5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#82858b"
+        android:layout_below="@+id/text_number"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <ImageButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/the_next_tep_to_select_button"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textview_rooms"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imagebutton_next" />
+
+</RelativeLayout>

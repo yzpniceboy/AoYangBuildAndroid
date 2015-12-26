@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/top_navigation_bar">
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/column"
+            android:id="@+id/imageview"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:background="@mipmap/category_selection_box"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_news"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/image_notice"
+            android:layout_toStartOf="@+id/image_notice"
+            android:visibility="invisible"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:paddingTop="8dp"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/news"
+            android:gravity="center_horizontal"
+            android:id="@+id/textview_news"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:layout_alignRight="@+id/image_news"
+            android:layout_alignEnd="@+id/image_news"
+            android:layout_alignBottom="@+id/imageview"
+            android:layout_alignLeft="@+id/imageview"
+            android:layout_alignStart="@+id/imageview" />
+        <ImageButton
+            android:background="@mipmap/category_selection_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_notice"
+            android:layout_alignTop="@+id/image_news"
+            android:layout_alignRight="@+id/imageview"
+            android:layout_alignEnd="@+id/imageview"
+            android:visibility="invisible"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:paddingTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_notices"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:id="@+id/textview_notice"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:layout_alignRight="@+id/imageview"
+            android:layout_alignEnd="@+id/imageview"
+            android:layout_alignLeft="@+id/image_notice"
+            android:layout_alignStart="@+id/image_notice"
+            android:layout_alignBottom="@+id/imageview" />
+    </RelativeLayout>
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/fl_article">
+  </FrameLayout>
+
+
+
+</LinearLayout>

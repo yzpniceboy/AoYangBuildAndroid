@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/code_image"
+        android:background="@mipmap/image"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignLeft="@+id/image_code"
+        android:layout_alignStart="@+id/image_code" />
+    <TextView
+        android:text="姓名"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/code_text"
+        android:layout_alignTop="@+id/code_image"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6" />
+    <TextView
+        android:text="电话号码："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_alignBaseline="@+id/code_phone_text"
+        android:layout_alignBottom="@+id/code_phone_text"
+        android:layout_toRightOf="@+id/code_image"
+        android:layout_toEndOf="@+id/code_image" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/code_phone_text"
+        android:layout_marginTop="89dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6" />
+    <ImageView
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/image_code"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/code_image"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

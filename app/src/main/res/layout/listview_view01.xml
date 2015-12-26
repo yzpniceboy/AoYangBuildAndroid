@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/hot">
+    <ImageView
+        android:paddingTop="7dp"
+        android:paddingLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/headlines_icon"/>
+    <TextView
+        android:paddingLeft="3dp"
+        android:paddingTop="7dp"
+        android:layout_width="297dp"
+        android:layout_height="wrap_content"
+            android:id="@+id/text_hot"
+        android:text="****************************有限公司强势入驻产业园"
+        android:layout_weight="0.60" />
+
+
+
+</LinearLayout>

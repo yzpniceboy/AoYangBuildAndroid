@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/zzh/work/澳洋/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/home/zzh/work/澳洋/app/build/intermediates/pre-dexed/debug/classes-cf09dabaf691d60b16e7f7f724671df894900f92.jar" />
+    </item>
+    <item
+        jar="/home/zzh/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/home/zzh/work/澳洋/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-89c9f6ddc268c6734d6a16a47207f2a5d9898462.jar" />
+    </item>
+    <item
+        jar="/home/zzh/work/澳洋/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/home/zzh/work/澳洋/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-f2e99c64059b55d367092dd3bfe01b511a2d90bb.jar" />
+    </item>
+
+</items>

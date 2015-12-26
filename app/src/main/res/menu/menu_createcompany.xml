@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item android:title="新建"
+            android:id="@+id/add_company"
+            android:icon="@mipmap/jiahao"
+            app:showAsAction="always"/>
+</menu>

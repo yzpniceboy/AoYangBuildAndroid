@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        /**
+        给下面的头条现在在轮播图内容的底部*/
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shadow_article"
+            >
+            /**
+            给头条布局*/
+            <RelativeLayout
+
+                android:id="@+id/author_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="20dp">
+                <TextView android:id="@+id/tv_title"
+                    android:drawableLeft="@mipmap/headlines_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="9dp"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_below="@+id/tv_date"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="9dp" />
+                <TextView android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_toRightOf="@id/tv_title"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:paddingTop="3dp"
+                    android:textColor="#fff"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/dot_wraper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+    </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

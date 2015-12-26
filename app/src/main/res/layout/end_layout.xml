@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="20sp"
+        android:layout_margin="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="尊敬的xxx"/>
+    <TextView
+        android:paddingLeft="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="您的预约成功了，欢迎您使用"/>
+    <View
+        android:layout_marginTop="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#82858b"/>
+     <TextView
+         android:textSize="20sp"
+         android:layout_margin="40dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="详情信息"/>
+    <TextView
+        android:layout_marginLeft="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date"
+        android:text="预约时间：         2015-2-12 09：33"/>
+    <TextView
+        android:layout_marginTop="20sp"
+        android:layout_marginLeft="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="您的姓名：         叶良辰"/>
+    <TextView
+        android:layout_marginTop="20sp"
+
+        android:layout_marginLeft="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="联系方式：         123456789102"/>
+    <TextView
+        android:layout_marginTop="20sp"
+
+        android:layout_marginLeft="60dp"
+        android:id="@+id/text_roomnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="房间编号：         715"/>
+    <LinearLayout
+        android:layout_marginLeft="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="备注："/>
+        <EditText
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</LinearLayout>

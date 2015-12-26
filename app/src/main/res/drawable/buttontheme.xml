@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:state_pressed="true"
+    android:drawable="@mipmap/selected_to_confirm_the_check_button"/>
+    <item
+        android:drawable="@mipmap/the_selected_button"/>
+</selector>

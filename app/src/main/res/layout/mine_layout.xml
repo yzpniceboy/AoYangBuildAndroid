@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:background="@mipmap/personal_info_box"
+            android:id="@+id/relative"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/notification_icon"
+                android:id="@+id/image_query"
+                android:layout_marginTop="29dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/set_icon"
+                android:id="@+id/imagebutton_setmine"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_alignTop="@+id/image_query"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+            <com.saint.aoyangbuulid.mine.utils.XCRoundImageView
+                android:src="@drawable/baozou"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/imageview_round"
+                android:layout_alignTop="@+id/image_query"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请登陆/用户名"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:layout_below="@+id/imageview_round"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/textview_loginmine" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="创建/加入公司"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_loginmine"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:id="@+id/text_company_name" />
+
+        </RelativeLayout>
+            <ImageView
+                android:layout_alignEnd="@+id/relative"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/module_frame"
+                android:id="@+id/image_mymoney"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="18sp"
+                android:paddingTop="10dp"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/account_icon"
+                android:layout_marginLeft="33dp"
+                android:layout_marginStart="33dp"
+                android:text="     我的账户"
+                android:layout_alignTop="@+id/image_mymoney"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/text_my_user" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账户余额:  $0.00"
+                android:textSize="10sp"
+                android:layout_marginRight="33dp"
+                android:layout_marginEnd="33dp"
+                android:layout_alignBottom="@+id/button_user"
+                android:layout_toLeftOf="@+id/button_user"
+                android:layout_toStartOf="@+id/button_user"
+                android:id="@+id/account_balance" />
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/module_frame"
+                android:layout_marginTop="24dp"
+                android:id="@+id/image_order"
+                android:layout_below="@+id/image_mymoney"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+
+                android:paddingTop="8dp"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/order_icon"
+                android:text="     预定订单"
+                android:layout_alignTop="@+id/image_order"
+                android:layout_alignRight="@+id/text_my_user"
+                android:layout_alignEnd="@+id/text_my_user"
+                android:id="@+id/text_order" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+
+                android:layout_width="wrap_content"
+                android:textSize="10sp"
+                android:layout_height="wrap_content"
+                android:text="会议室 健身房"
+                android:layout_alignBottom="@+id/button_orser"
+                android:layout_alignLeft="@+id/account_balance"
+                android:layout_alignStart="@+id/account_balance"
+                android:id="@+id/textView7" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/chevron_right"
+                android:id="@+id/button_user"
+                android:layout_marginBottom="6dp"
+                android:layout_alignBottom="@+id/text_my_user"
+                android:layout_alignLeft="@+id/button_orser"
+                android:layout_alignStart="@+id/button_orser" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/chevron_right"
+                android:layout_marginBottom="6dp"
+                android:id="@+id/button_orser"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_alignBottom="@+id/text_order"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/module_frame"
+                android:id="@+id/image_scan"
+                android:layout_marginTop="24dp"
+                android:layout_below="@+id/image_order"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:visibility="gone"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingTop="8dp"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/scan"
+                android:text="     扫描二维码"
+                android:layout_alignTop="@+id/image_scan"
+                android:layout_alignLeft="@+id/text_order"
+                android:layout_alignStart="@+id/text_order"
+                android:id="@+id/text_scan" />
+
+    <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/module_frame"
+                android:id="@+id/image_mycode"
+                android:layout_marginTop="24dp"
+                android:layout_below="@+id/image_scan"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingTop="8dp"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/qr_cord"
+                android:text="     我的二维码"
+                android:id="@+id/textView5"
+                android:layout_alignTop="@+id/image_mycode"
+                android:layout_alignLeft="@+id/text_scan"
+                android:layout_alignStart="@+id/text_scan" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/chevron_right"
+                android:id="@+id/imageButton2"
+                android:layout_alignBottom="@+id/textView5"
+                android:layout_marginBottom="8dp"
+                android:layout_alignLeft="@+id/button_orser"
+                android:layout_alignStart="@+id/button_orser" />
+
+    <ImageButton
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_right_scan"
+        android:background="@mipmap/chevron_right"
+        android:layout_marginBottom="8dp"
+        android:layout_alignBottom="@+id/text_scan"
+        android:layout_toRightOf="@+id/account_balance"
+        android:layout_toEndOf="@+id/account_balance" />
+
+
+</RelativeLayout>
+

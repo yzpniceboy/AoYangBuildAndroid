@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_data"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:id="@+id/text_data"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edittext_money"
+            android:layout_alignTop="@+id/text_data"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/way_of_chagre"
+            android:layout_marginTop="25dp"
+            android:id="@+id/text_style"
+            android:layout_below="@+id/edittext_money"
+            android:layout_alignLeft="@+id/text_data"
+            android:layout_alignStart="@+id/text_data" />
+        <View
+
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="14dp"
+            android:layout_below="@+id/text_style"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/image_line1"
+            android:background="#85828b"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/pay_treasure_icon"
+                android:layout_below="@+id/image_line1"
+                android:layout_alignLeft="@+id/text_style"
+                android:layout_alignStart="@+id/text_style"
+                android:layout_marginTop="16dp"
+                android:id="@+id/image_pay" />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alipay"
+            android:id="@+id/text_pay"
+            android:layout_above="@+id/image_line2"
+            android:layout_toRightOf="@+id/text_style"
+            android:layout_toEndOf="@+id/text_style"
+            android:layout_alignTop="@+id/image_pay" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="58dp"
+            android:layout_marginEnd="58dp"
+            android:layout_alignBottom="@+id/text_pay"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            style="@style/CheckboxTheme.Company"
+            android:id="@+id/check_pay" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#82858c"
+            android:layout_below="@+id/image_pay"
+            android:layout_marginTop="10dp"
+            android:id="@+id/image_line2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/wechat_payment_icon"
+            android:layout_below="@+id/image_pay"
+            android:layout_alignLeft="@+id/image_pay"
+            android:layout_alignStart="@+id/image_pay"
+            android:layout_marginTop="30dp"
+            android:id="@+id/image_wechat" />
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wechat"
+            android:id="@+id/text_wechat"
+            android:layout_alignBottom="@+id/image_wechat"
+            android:layout_alignLeft="@+id/text_pay"
+            android:layout_alignStart="@+id/text_pay"
+            android:layout_alignTop="@+id/image_wechat" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CheckboxTheme.Company"
+            android:layout_alignTop="@+id/text_wechat"
+            android:layout_alignLeft="@+id/check_pay"
+            android:layout_alignStart="@+id/check_pay"
+            android:id="@+id/check_wechat" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#82858b"
+            android:id="@+id/image_line3"
+            android:layout_below="@+id/image_wechat"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/cash_payment_icon"
+            android:id="@+id/image_cash"
+            android:layout_below="@+id/image_line3"
+            android:layout_alignLeft="@+id/image_wechat"
+            android:layout_alignStart="@+id/image_wechat" />
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cash"
+            android:id="@+id/text_cash"
+            android:layout_alignBottom="@+id/image_cash"
+            android:layout_alignLeft="@+id/text_wechat"
+            android:layout_alignStart="@+id/text_wechat"
+            android:layout_alignTop="@+id/image_cash" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CheckboxTheme.Company"
+            android:layout_alignBottom="@+id/text_cash"
+            android:layout_alignLeft="@+id/check_wechat"
+            android:layout_alignStart="@+id/check_wechat"
+            android:id="@+id/check_cash" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#82858c"
+            android:id="@+id/view_line4"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/check_cash"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <ImageButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttontheme"
+            android:id="@+id/button_end"
+            android:layout_below="@+id/view_line4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp" />
+
+
+</RelativeLayout>
+
+
+
+
+

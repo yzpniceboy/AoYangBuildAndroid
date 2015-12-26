@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+    android:padding="10dp"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/title_text"
+    android:textStyle="bold"
+    android:text="教育部：“逼格”等低俗语言涌现到非治不可的程度"
+    android:textSize="20dp"/>
+    <TextView
+    android:paddingLeft="10dp"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textSize="10dp"
+    android:text="****企业   10-16 10：10"
+    android:layout_alignBaseline="@+id/article_text"
+    android:layout_alignBottom="@+id/article_text"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:id="@+id/text_time"/>
+    <TextView
+    android:padding="10dp"
+    android:layout_width="fill_parent"
+    android:layout_height="392dp"
+    android:id="@+id/article_text"
+    android:text="     教育部：“逼格”等低俗语言涌现到非治不可的程度司机家里撒简单了 极端死垃圾拉撒酒拉撒酒拉 就啊垃圾拉萨就撒了啊撒了啊撒了将死垃圾啊撒了拉萨 酸辣家里的撒酒拉萨啊酒拉萨啊撒了拉萨酒拉萨"
+    android:textSize="15dp"
+    android:layout_below="@+id/title_text"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:weightSum="1"
+    android:padding="20dp"
+    >
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_horizontal"
+        android:text="文章标题"
+        android:textColor="#0099cc"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_notitle"/>
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:padding="10dp"
+        android:textColor="#82858b"
+        android:textSize="18sp"
+        android:text="内容摘要"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_nocontent"
+        />
+    <TextView
+        android:gravity="right"
+        android:text="公司名称"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_nocompanyname"/>
+    <TextView
+        android:gravity="right"
+        android:text="时间"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_nodate"/>
+
+</LinearLayout>

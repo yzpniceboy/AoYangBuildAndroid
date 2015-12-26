@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+
+
+    <!--<style name="MyTheme_back" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">-->
+        <!--<item name="android:background">@mipmap/top_navigation_bar</item>-->
+        <!--<item name="actionMenuTextColor">@android:color/black</item>-->
+        <!--<item name="actionMenuTextAppearance">@style/MenuTextStyle</item>-->
+    <!--</style>-->
+    <!--<style name="MenuTextStyle" >-->
+        <!--<item name="android:textColor">@android:color/black</item>-->
+        <!--<item name="android:textSize">18sp</item>-->
+        <!--<item name="titleTextStyle">@style/title</item>-->
+    <!--</style>-->
+    <!--<style name="title" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--<item name="android:padding">20dp</item>-->
+    <!--</style>-->
+
+
+    <style name="CheckboxTheme" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/chockbutton</item>
+    </style>
+    <style name="ButtonTheme" parent="Widget.AppCompat.ImageButton">
+        <item name="android:button">@drawable/buttontheme</item>
+    </style>
+    <style name="CheckboxTheme.Company" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbutton_company</item>
+    </style>
+
+    <style name="dot_style">
+        <item name="android:layout_width">5dip</item>
+        <item name="android:layout_height">5dip</item>
+        <item name="android:background">@drawable/dot_normal</item><item name="android:layout_marginLeft">1.5dip</item>
+        <item name="android:layout_marginRight">1.5dip</item></style>
+</resources>

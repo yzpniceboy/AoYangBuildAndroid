@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingEnd="16dp"
+    android:background="@mipmap/background"
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约时间"
+            android:id="@+id/textview_date"
+            android:layout_alignBottom="@+id/view_line9"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:gravity="center"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            android:hint="例如：2015-2-12 09:33"
+            android:layout_alignTop="@+id/textview_date"
+            android:id="@+id/view_time"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/view4"
+            android:layout_alignEnd="@+id/view4" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/chevron_right"
+            android:layout_alignTop="@+id/view_time"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/image_time_left"
+            android:layout_alignBottom="@+id/view_time" />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#82858b"
+            android:layout_marginTop="35dp"
+            android:id="@+id/view_line9"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/view_time"
+            android:layout_alignEnd="@+id/view_time" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="房间"
+        android:layout_alignTop="@+id/view_room"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textviewroom" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="例如：715"
+        android:gravity="center"
+        android:layout_marginTop="70dp"
+        android:id="@+id/view_room"
+        android:layout_below="@+id/view_line9"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/chevron_right"
+        android:layout_alignTop="@+id/view_room"
+        android:layout_alignLeft="@+id/image_time_left"
+        android:layout_alignStart="@+id/image_time_left"
+        android:layout_above="@+id/view4" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#82858b"
+        android:layout_below="@+id/textviewroom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view4" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="备注"
+        android:id="@+id/text_orders"
+        android:layout_alignBaseline="@+id/edit_orders"
+        android:layout_alignBottom="@+id/edit_orders"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <EditText
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="特别说明，所需说明"
+        android:id="@+id/edit_orders"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/view4"
+        android:layout_alignRight="@+id/view_time"
+        android:layout_alignEnd="@+id/view_time" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/the_next_tep_to_select_button"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/edit_orders"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_next" />
+
+
+
+</RelativeLayout>

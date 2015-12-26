@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:padding="10dp">
+
+    <EditText
+        android:hint="创建新的公司(必填)："
+        android:id="@+id/postcompany"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:background="@drawable/edittextshape"/>
+    <EditText
+        android:layout_marginTop="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="公司电话（非必须）："
+        android:id="@+id/edit_phone"
+        android:background="@drawable/edittextshape"/>
+    <EditText
+        android:layout_marginTop="5dp"
+        android:id="@+id/edit_brief"
+        android:gravity="left|top"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:hint="公司简介（非必须）："
+        android:layout_weight="0.94"
+        android:background="@drawable/edittextshape"/>
+
+    <Button
+        android:background="@drawable/buttonshape"
+        android:text="创建"
+        android:id="@+id/button_posst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
