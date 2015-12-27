@@ -50,12 +50,16 @@ public class Choice_Sign_Activity extends Activity  implements View.OnClickListe
                 intent.putExtra("role","subscriber");
                 intent.setClass(Choice_Sign_Activity.this, Sign_Activity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+
                 break;
             case R.id.imagebutton_enterprise:
                 intent=new Intent();
                 intent.putExtra("role","contributor");
                 intent.setClass(Choice_Sign_Activity.this, Sign_Activity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+
                 break;
             case R.id.image_exittwo:
                 Toast.makeText(this,"结束当前页面",Toast.LENGTH_SHORT).show();

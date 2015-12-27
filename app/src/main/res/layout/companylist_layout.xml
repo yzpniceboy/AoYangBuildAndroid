@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_company"
-        android:src="@mipmap/image"/>
+        android:src="@mipmap/company_logo3x"/>
     <TextView
         android:hint="公司名字"
         android:textSize="18sp"
@@ -25,17 +25,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="电话："
-        android:layout_alignTop="@+id/text_compnay_phone"
-        android:layout_alignLeft="@+id/text_company_name"
-        android:layout_alignStart="@+id/text_company_name"
-        android:id="@+id/textView3" />
+        android:id="@+id/textView3"
+        android:layout_below="@+id/image_company"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="15dp" />
     <TextView
         android:textSize="15sp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_compnay_phone"
-        android:layout_alignBottom="@+id/image_company"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/textView3"
         android:layout_toEndOf="@+id/textView3" />
 

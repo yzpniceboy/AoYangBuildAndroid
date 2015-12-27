@@ -26,7 +26,6 @@ public class ChargeSubmit_Activity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.changeend);
 
-
         Intent intent=getIntent();
         room=intent.getStringExtra("room");
         time=intent.getStringExtra("time");
@@ -44,6 +43,7 @@ public class ChargeSubmit_Activity extends BaseActivity {
                     intent.putExtra("rooms",room);
                     intent.setClass(ChargeSubmit_Activity.this, Payfor_Succeed_Activity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 
                 }
             });
@@ -54,7 +54,6 @@ public class ChargeSubmit_Activity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 

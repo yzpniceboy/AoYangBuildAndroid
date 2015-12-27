@@ -22,8 +22,8 @@ public class Payfor_Succeed_Activity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.end_layout);
 
-        text_date= (TextView) findViewById(R.id.date);
-        textrooms= (TextView) findViewById(R.id.text_roomnumber);
+            text_date= (TextView) findViewById(R.id.date);
+            textrooms= (TextView) findViewById(R.id.text_roomnumber);
 
             Intent intent=getIntent();
             date=intent.getStringExtra("timedate");

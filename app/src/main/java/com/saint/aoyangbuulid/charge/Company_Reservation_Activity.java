@@ -49,11 +49,13 @@ public class Company_Reservation_Activity extends BaseActivity implements View.O
                         Intent intent=new Intent();
                         intent.setClass(Company_Reservation_Activity.this,SearchCompany_Activity.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
                         break;
 
                     case R.id.imagebutton_next:
                         intent=new Intent();
                         intent.setClass(Company_Reservation_Activity.this, ChargeSubmit_Activity.class);
+                        //返回动画
                         startActivity(intent);
 
                         break;

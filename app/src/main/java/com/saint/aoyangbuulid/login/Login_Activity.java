@@ -7,8 +7,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +25,6 @@ import com.loopj.android.http.RequestParams;
 import com.saint.aoyangbuulid.MainActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.Utils.Constant;
-import com.saint.aoyangbuulid.mine.Mine_Fragment;
 import com.saint.aoyangbuulid.sign.Choice_Sign_Activity;
 
 import org.json.JSONArray;
@@ -42,15 +44,13 @@ public class Login_Activity extends Activity implements View.OnClickListener{
     public EditText et_phonenumber,et_passed;
     public Button bt_sign,bt_forgetpassed;
     public ImageButton imageButton_login,imageButton_exit;
-
+    private TextWatcher phoneTextWatcher;
     //定义SharedPreferences访问模式和文件名称
     public SharedPreferences sp;
     public  static  final  String PREFERENCE_NAME="SaveSetting";
     public  static int Mode=Context.MODE_WORLD_READABLE;
     //用来存放帐号密码
-    public String p,w;
-    public Mine_Fragment fragment;
-    private boolean isTRUE=true;
+    public String p,w,number;
     private ImageView welcomeimage=null;
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -80,13 +80,36 @@ public class Login_Activity extends Activity implements View.OnClickListener{
         et_passed.setText(sp.getString("passed", ""));
         et_phonenumber.setText(sp.getString("phone", ""));
 
-//        if (et_phonenumber.getText().toString()==null||et_passed.getText().toString()==null){
-//
-//        }else {
-//            Intent intent=new Intent(Login_Activity.this,MainActivity.class);
-//            startActivity(intent);
-//        }
 
+        /**
+         * 监听输入的手机号码是否正确
+         *
+         * */
+
+        phoneTextWatcher=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                number=et_phonenumber.getText().toString();
+                if (isMobile(number)==false){
+                    imageButton_login.setClickable(false);
+                    et_phonenumber.setTextColor(Color.RED);
+                }else {
+                    imageButton_login.setClickable(true);
+                    et_phonenumber.setTextColor(Color.WHITE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
+        et_phonenumber.addTextChangedListener(phoneTextWatcher);
 
     }
 //点击事件
@@ -210,13 +233,11 @@ public class Login_Activity extends Activity implements View.OnClickListener{
     }
     //判断输入框内容为手机号码
     public static boolean isMobile(String number) {
-
         Pattern p = null;
         Matcher m = null;
-        boolean b = false;
         p = Pattern.compile("^[1][3,4,5,8][0-9]{9}$"); // 验证手机号
         m = p.matcher(number);
-        b = m.matches();
-        return b;
+        return  m.matches();
     }
+
 }

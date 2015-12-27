@@ -85,17 +85,14 @@ public class Room_Reservation_Activity extends BaseActivity implements View.OnCl
                 intent=new Intent();
                 intent.setClass(Room_Reservation_Activity.this, SearchRoom_Activity.class);
                 startActivity(intent);
-
-
-
+                overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
                 break;
+
             case R.id.view_time:
-
-
                 intent=new Intent();
                 intent.setClass(Room_Reservation_Activity.this, Setingtime_view.class);
                 startActivity(intent);
-
+                overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
                 break;
         }
 

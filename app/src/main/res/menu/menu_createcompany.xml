@@ -3,6 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
         <item android:title="新建"
             android:id="@+id/add_company"
-            android:icon="@mipmap/jiahao"
+            android:icon="@mipmap/jiaohao2x"
             app:showAsAction="always"/>
 </menu>

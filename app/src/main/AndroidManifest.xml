@@ -169,14 +169,6 @@
             android:label="账户详情"
             android:screenOrientation="portrait"/>
 
-        <!--<activity-->
-            <!--android:name=".LoginActivity"-->
-            <!--android:label="@string/title_activity_login"-->
-            <!--android:parentActivityName=".BaseActivity" >-->
-            <!--<meta-data-->
-                <!--android:name="android.support.PARENT_ACTIVITY"-->
-                <!--android:value="com.saint.aoyangbuulid.BaseActivity" />-->
-        <!--</activity>-->
     </application>
 
 </manifest>

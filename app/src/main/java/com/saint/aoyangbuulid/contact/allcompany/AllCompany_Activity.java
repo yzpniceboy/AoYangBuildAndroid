@@ -109,7 +109,6 @@ public class AllCompany_Activity extends BaseActivity {
                 super.onSuccess(statusCode, headers, response);
                 list.clear();
                 Iterator<String> iterator = response.keys();
-                System.out.print(iterator);
                 while (iterator.hasNext()) {
                     String key = iterator.next().toString();
                     String v = response.optString(key);
@@ -119,12 +118,23 @@ public class AllCompany_Activity extends BaseActivity {
                         String name = object.optString("name");
                         int company_id = object.optInt("id");
                         String phone=object.optString("phone");
-                        if (!phone.equals(JSONObject.NULL)){
-                            Map<String, Object> map = new HashMap<String, Object>();
-                            map.put("name", name);
-                            map.put("phone",phone);
-                            map.put("company_id", company_id);
-                            list.add(map);
+
+                        if (!phone.equals("")){
+                            if (phone.equals("null")){
+                                phone="暂未设置";
+                                Map<String, Object> map = new HashMap<String, Object>();
+                                map.put("name", name);
+                                map.put("phone",phone);
+                                map.put("company_id", company_id);
+                                list.add(map);
+                            }else {
+                                Map<String, Object> map = new HashMap<String, Object>();
+                                map.put("name", name);
+                                map.put("phone",phone);
+                                map.put("company_id", company_id);
+                                list.add(map);
+                            }
+
                         }else {
                             phone="暂未设置";
                             Map<String, Object> map = new HashMap<String, Object>();

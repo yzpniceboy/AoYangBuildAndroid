@@ -3,8 +3,11 @@ package com.saint.aoyangbuulid.sign;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -24,6 +27,8 @@ import org.json.JSONArray;
 import java.io.UnsupportedEncodingException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -39,6 +44,7 @@ public class Sign_Activity extends Activity implements View.OnClickListener {
     int i = 5;
     public EditText et_phone, et_passed, et_passedagain, et_name;
     public String phone, passed, repassed, name, role;
+    private TextWatcher textWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,33 @@ public class Sign_Activity extends Activity implements View.OnClickListener {
 //        imageButton_getcode.setOnClickListener(this);
         imageButton_registered.setOnClickListener(this);
 //        text.setVisibility(View.INVISIBLE);
+/**
+ * 对输入文本框中的号码进行检测是否为手机号码*/
+        textWatcher =new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String number=et_phone.getText().toString();
+                    if (isMobile(number)==false){
+                        imageButton_registered.setClickable(false);
+                        et_phone.setTextColor(Color.RED);
+                    }else {
+                        imageButton_registered.setClickable(true);
+                        et_phone.setTextColor(Color.WHITE);
+                    }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        };
+            et_phone.addTextChangedListener(textWatcher);
 
 
 
@@ -154,12 +187,20 @@ public class Sign_Activity extends Activity implements View.OnClickListener {
         params.add("data[nickname]", name);
         params.add("data[display_name]", name);
         params.add("data[role]", role);
-        client.post(url,  params, new JsonHttpResponseHandler() {
+        client.post(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
             }
         });
+    }
+    //判断输入框内容为手机号码
+    public static boolean isMobile(String number) {
+        Pattern p = null;
+        Matcher m = null;
+        p = Pattern.compile("^[1][3,4,5,8][0-9]{9}$"); // 验证手机号
+        m = p.matcher(number);
+        return  m.matches();
     }
 
 }

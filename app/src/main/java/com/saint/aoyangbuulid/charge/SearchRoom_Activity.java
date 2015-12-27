@@ -31,10 +31,6 @@ public class SearchRoom_Activity extends BaseActivity implements View.OnClickLis
     public CheckBox box;
     public TextView text;
     public String roomnumber;
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +71,6 @@ public class SearchRoom_Activity extends BaseActivity implements View.OnClickLis
                 intentroom.putExtra("room",roomnumber);
                 intentroom.setClass(SearchRoom_Activity.this, Room_Reservation_Activity.class);
                 startActivity(intentroom);
-
-
         }
 
     }

@@ -51,7 +51,7 @@ public class AllCompany_Adapter extends BaseAdapter {
         }
         holder.id= (int) list.get(position).get("company_id");
         holder.text_company_name.setText(String.valueOf((list.get(position)).get("name")));
-        holder.image_company.setImageResource(R.mipmap.image);
+        holder.image_company.setImageResource(R.mipmap.company_logo3x);
         holder.text_company_phone.setText(String.valueOf(list.get(position).get("phone")));
         return convertView;
     }

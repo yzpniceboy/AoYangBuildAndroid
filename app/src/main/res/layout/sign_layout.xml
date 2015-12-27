@@ -3,8 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/backgroundlogin"
-   >
+    android:background="@mipmap/backgroundlogin">
+
     <ImageButton
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
@@ -43,16 +43,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="27dp"/>
-        <!--android:layout_alignRight="@+id/text_gettime"-->
-        <!--android:layout_alignEnd="@+id/text_gettime" />-->
-        <!--<ImageButton-->
-            <!--android:id="@+id/imagebutton_getcode"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@mipmap/get_verification_code_button"-->
-            <!--android:layout_alignTop="@+id/edittext_choice_phonenumberext_code"-->
-            <!--android:layout_alignRight="@+id/edittext_choice_phonenumberext_code"-->
-            <!--android:layout_alignEnd="@+id/edittext_choice_phonenumberext_code" />-->
+
     <EditText
         android:layout_width="261dp"
         android:layout_height="wrap_content"
@@ -101,6 +92,7 @@
         android:layout_alignRight="@+id/imagebutton_registered"
         android:layout_alignEnd="@+id/imagebutton_registered" />
     <CheckBox
+        android:checked="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkbox_remarks"
@@ -108,14 +100,7 @@
         android:layout_alignLeft="@+id/imagebutton_registered"
         android:layout_alignStart="@+id/imagebutton_registered"
         style="@style/CheckboxTheme"/>
-    <!--<TextView-->
-        <!--android:visibility="invisible"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="25dp"-->
-        <!--android:id="@+id/text_gettime"-->
-        <!--android:layout_alignBottom="@+id/imagebutton_getcode"-->
-        <!--android:layout_toLeftOf="@+id/image_exitthree"-->
-        <!--android:layout_toStartOf="@+id/image_exitthree" />-->
+
 
 
 </RelativeLayout>
