@@ -83,6 +83,7 @@ public class Posted_Activity extends BaseActivity {
         if (item.getItemId()==android.R.id.home){
             Intent intent=new Intent(Posted_Activity.this,MyBill_Activity.class);
             startActivity(intent);
+            Posted_Activity.this.finish();
         }
         return super.onOptionsItemSelected(item);
 

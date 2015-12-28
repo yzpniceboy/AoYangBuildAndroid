@@ -164,6 +164,7 @@ public class MyBill_Activity extends BaseActivity {
 
                 break;
             case android.R.id.home:
+
                 MyBill_Activity.this.finish();
                 break;
         }

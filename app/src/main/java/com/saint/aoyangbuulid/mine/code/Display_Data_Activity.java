@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -33,7 +36,7 @@ import cz.msebera.android.httpclient.auth.AuthScope;
 /**
  * Created by zzh on 15-12-19.
  */
-public class Dispaly_data_activity extends BaseActivity {
+public class Display_Data_Activity extends BaseActivity {
     XListView view;
     String data;
     private List<Map<String , Object>>  list=new ArrayList<Map<String ,Object>>();
@@ -42,7 +45,7 @@ public class Dispaly_data_activity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            adapterCapture=new MipcaAdapterCapture(Dispaly_data_activity.this,list);
+            adapterCapture=new MipcaAdapterCapture(Display_Data_Activity.this,list);
             view.setAdapter(adapterCapture);
         }
     };
@@ -54,7 +57,7 @@ public class Dispaly_data_activity extends BaseActivity {
         Intent  intent=getIntent();
         data=intent.getStringExtra("key_data");
         getJSON();
-        adapterCapture=new MipcaAdapterCapture(Dispaly_data_activity.this,list);
+        adapterCapture=new MipcaAdapterCapture(Display_Data_Activity.this,list);
         view.setAdapter(adapterCapture);
         view.setPullLoadEnable(true);
         view.setPullRefreshEnable(true);
@@ -127,7 +130,9 @@ public class Dispaly_data_activity extends BaseActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                Toast.makeText(Dispaly_data_activity.this, "查无此人", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Display_Data_Activity.this, "查无此人", Toast.LENGTH_SHORT).show();
+
+
 
             }
         });
@@ -138,5 +143,20 @@ public class Dispaly_data_activity extends BaseActivity {
         view.stopRefresh();
         view.stopLoadMore();
         view.setRefreshTime(time);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            Display_Data_Activity.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

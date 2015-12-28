@@ -131,8 +131,8 @@ public class PostComment_Activity extends BaseActivity {
                     case android.R.id.home:
                         intent=new Intent(PostComment_Activity.this, MainActivity.class);
                         startActivity(intent);
-                        overridePendingTransition(R.anim.push_right_in,
-                                R.anim.push_right_out);
+//                        overridePendingTransition(R.anim.push_right_in,
+//                                R.anim.push_right_out);
                         PostComment_Activity.this.finish();
 
 

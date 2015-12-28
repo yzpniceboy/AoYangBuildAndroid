@@ -23,10 +23,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.login.Login_Activity;
-import com.saint.aoyangbuulid.mine.code.Dispaly_data_activity;
+import com.saint.aoyangbuulid.mine.code.Display_Data_Activity;
 import com.saint.aoyangbuulid.mine.code.MipcaActivityCapture;
 import com.saint.aoyangbuulid.mine.code.MyCode_Activity;
 import com.saint.aoyangbuulid.mine.utils.MyBill_Activity;
@@ -62,7 +61,6 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view=inflater.inflate(R.layout.mine_layout,container,false);
 
-
         //实例化控件
         button_user= (ImageButton) view.findViewById(R.id.button_user);
         text_my_user= (TextView) view.findViewById(R.id.text_my_user);
@@ -74,9 +72,6 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         image_scan= (ImageView) view.findViewById(R.id.image_scan);
         image_mycode= (ImageView) view.findViewById(R.id.image_mycode);
         text_company= (TextView) view.findViewById(R.id.text_company_name);
-
-
-
         sp=getActivity().getSharedPreferences("image",Context.MODE_PRIVATE);
         textView_loginmine= (TextView) view.findViewById(R.id.textview_loginmine);
         imageButton_setmine= (ImageButton) view.findViewById(R.id.imagebutton_setmine);
@@ -99,8 +94,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
             image_scan.setVisibility(View.VISIBLE);
             text_scan.setVisibility(View.VISIBLE);
             image_right_scan.setVisibility(View.VISIBLE);
-//            image_mymoney.setClickable(false);
-//            image_order.setClickable(false);
+
             image_scan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -137,7 +131,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         return view;
@@ -165,6 +159,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                     Intent intent=new Intent();
                     intent.setClass(getActivity(),MyOrder_Activity.class);
                     startActivity(intent);
+
                 }
 
                 break;
@@ -206,11 +201,11 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 Intent intent=new Intent(getActivity(),MyCode_Activity.class);
                 intent.putExtra("id",sp.getString("user_id",""));
                 startActivity(intent);
+
                 break;
         }
     }
     public void showDialog(){
-
         String []items={"拍照","从本地获取"};
          dialog=new AlertDialog.Builder(getActivity())
                 .setTitle("更改头像")
@@ -234,9 +229,6 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 });
         dialog.create().show();
     }
-
-
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case 1:
@@ -255,8 +247,6 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 if (data != null) {
                     Bundle extras = data.getExtras();
                     head = extras.getParcelable("data");
-
-
                     if(head!=null){
 /**
  * 上传服务器代码
@@ -270,7 +260,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 if(resultCode == RESULT_OK){
                     Bundle bundle = data.getExtras();
                     String result=bundle.getString("result");
-                    Intent intent=new Intent(getActivity(), Dispaly_data_activity.class);
+                    Intent intent=new Intent(getActivity(), Display_Data_Activity.class);
                     intent.putExtra("key_data", result);
                     startActivity(intent);
 

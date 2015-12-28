@@ -9,6 +9,7 @@
         android:src = "@mipmap/image"
         android:id="@+id/image_user" />
     <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="张三"
@@ -19,6 +20,7 @@
         android:layout_toRightOf="@+id/image_user"
         android:layout_toEndOf="@+id/image_user" />
     <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="职位: 销售经理"
@@ -30,11 +32,13 @@
         android:layout_toEndOf="@+id/image_user"
         android:layout_marginTop="15dp" />
     <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="40dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text_right_phone"
-        android:layout_below="@+id/textview_professional_title"
-        android:layout_toRightOf="@+id/image_user"
-        android:layout_toEndOf="@+id/image_user" />
+        android:layout_below="@+id/image_user"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

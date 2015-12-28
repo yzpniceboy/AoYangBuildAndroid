@@ -118,11 +118,7 @@ public class Sign_Activity extends Activity implements View.OnClickListener {
             case R.id.image_exitthree:
                 finish();
                 break;
-//            case R.id.imagebutton_getcode:
-//                imageButton_getcode.setVisibility(View.INVISIBLE);
-//                text.setVisibility(View.VISIBLE);
-//                StartTime();
-//                break;
+//
             case R.id.imagebutton_registered:
                 Intent intent=getIntent();
                 role=intent.getStringExtra("role");

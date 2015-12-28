@@ -59,6 +59,7 @@ public class Post_Coment_Activity extends BaseActivity{
                 Intent intent=new Intent(Post_Coment_Activity.this, ChargeSubmit_Activity.class);
                 intent.putExtra("amount",amount);
                 startActivity(intent);
+                Post_Coment_Activity.this.finish();
                 break;
         }
 

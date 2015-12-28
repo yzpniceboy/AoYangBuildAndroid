@@ -17,7 +17,6 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.saint.aoyangbuulid.BaseActivity;
-import com.saint.aoyangbuulid.MainActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.Utils.Constant;
 import com.saint.aoyangbuulid.login.Login_Activity;
@@ -78,7 +77,7 @@ public class PostNotice_Activity extends BaseActivity  {
 
                     startActivity(in);
 
-                    PostNotice_Activity.this.finish();
+//                    PostNotice_Activity.this.finish();
 
                 }else {
                     Toast.makeText(PostNotice_Activity.this, "评论不能为空", Toast.LENGTH_SHORT).show();
@@ -105,9 +104,9 @@ public class PostNotice_Activity extends BaseActivity  {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                Intent intent=new Intent(PostNotice_Activity.this, MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+//                Intent intent=new Intent(PostNotice_Activity.this, MainActivity.class);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
                 PostNotice_Activity.this.finish();
                 break;
         }

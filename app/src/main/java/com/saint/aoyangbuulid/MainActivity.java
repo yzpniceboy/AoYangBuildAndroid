@@ -78,8 +78,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
     public void initButton(){
 
-
-
         relative_artice= (RelativeLayout) findViewById(R.id.relative_article);
         relative_reserve= (RelativeLayout) findViewById(R.id.relative_reserve);
         relative_mine= (RelativeLayout) findViewById(R.id.relative_mine);

@@ -169,8 +169,8 @@
         <activity android:name=".mine.code.MipcaActivityCapture"
             android:screenOrientation="portrait"
             android:label="扫描二维码"/>
-        <activity android:name=".mine.code.Dispaly_data_activity"
-            android:label="详情"
+        <activity android:name=".mine.code.Display_Data_Activity"
+            android:label="个人详情"
             android:screenOrientation="portrait"/>
         <activity android:name=".mine.utils.MyOrder_Activity"
             android:screenOrientation="portrait"

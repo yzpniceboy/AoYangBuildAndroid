@@ -1,8 +1,9 @@
 package com.saint.aoyangbuulid.reserve;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,8 +16,6 @@ import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
 
 import com.saint.aoyangbuulid.R;
-import com.saint.aoyangbuulid.charge.Company_Reservation_Activity;
-import com.saint.aoyangbuulid.charge.Room_Reservation_Activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,37 +55,59 @@ public class Reserve_Fragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position==0){
-                    Intent intent=new Intent();
-                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
-                    startActivity(intent);
+//                    Intent intent=new Intent();
+//                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
+//                    startActivity(intent);
+                    dialog();
+
                 }else if (position==1){
-                    Intent intent=new Intent();
-                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
-                    startActivity(intent);
+//                    Intent intent=new Intent();
+//                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
+//                    startActivity(intent);
+                    dialog();
+
 
                 }else if (position==2){
-                    Intent intent=new Intent();
-                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
-                    startActivity(intent);
+//                    Intent intent=new Intent();
+//                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
+//                    startActivity(intent);
+                    dialog();
+
                 }else if (position==3){
-                    Intent intent=new Intent();
-                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
-                    startActivity(intent);
+//                    Intent intent=new Intent();
+//                    intent.setClass(getActivity(), Company_Reservation_Activity.class);
+//                    startActivity(intent);
+                    dialog();
+
                 }else if (position==4){
-                    Intent intent=new Intent();
-                    intent.setClass(getActivity(), Room_Reservation_Activity.class);
-                    startActivity(intent);
+//                    Intent intent=new Intent();
+//                    intent.setClass(getActivity(), Room_Reservation_Activity.class);
+//                    startActivity(intent);
+                    dialog();
+
 
                 }else if (position==5){
-                    Intent intent=new Intent();
-                    intent.setClass(getActivity(), Room_Reservation_Activity.class);
-                    startActivity(intent);
-
+//                    Intent intent=new Intent();
+//                    intent.setClass(getActivity(), Room_Reservation_Activity.class);
+//                    startActivity(intent);
+                        dialog();
                 }
             }
         });
 
         return view;
+    }
+    private void dialog(){
+        AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity())
+                .setTitle("提示")
+                .setMessage("服务暂未开启，敬请期待...");
+        dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.create().show();
     }
 
 

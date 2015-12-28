@@ -65,9 +65,6 @@ public class Select_Company_Activity extends BaseActivity {
 
         }
     };
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,6 +148,8 @@ public class Select_Company_Activity extends BaseActivity {
                 Intent intent=new Intent();
                 intent.setClass(Select_Company_Activity.this,PostCompany_Activity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+//                Select_Company_Activity.this.finish();
                 break;
         }
 

@@ -153,8 +153,8 @@ public class GetCommnet_Activity extends BaseActivity {
             startActivity(intent);
 //
 
-            overridePendingTransition(R.anim.push_right_in,
-                    R.anim.push_right_out);
+//            overridePendingTransition(R.anim.push_right_in,
+//                    R.anim.push_right_out);
             GetCommnet_Activity.this.finish();
 
         }
