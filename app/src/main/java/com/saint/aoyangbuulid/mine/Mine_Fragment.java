@@ -23,7 +23,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.login.Login_Activity;
@@ -49,8 +48,8 @@ import java.io.IOException;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class Mine_Fragment extends Fragment implements View.OnClickListener {
     private static final int RESULT_OK =-1 ;
-    public ImageButton imageButton_setmine,button_query;
-    public TextView textView_loginmine,text_company,text_scan;
+    public ImageButton imageButton_setmine,button_query,button_user;
+    public TextView textView_loginmine,text_company,text_scan,text_my_user,text_account_balance;
     public ImageView image_round,image_scan,image_mycode,image_right_scan,image_mymoney,image_order;
     public Bitmap head;//头像Bitmap
     private static String path="/sdcard/myHead/";//sd路径
@@ -65,6 +64,9 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
 
 
         //实例化控件
+        button_user= (ImageButton) view.findViewById(R.id.button_user);
+        text_my_user= (TextView) view.findViewById(R.id.text_my_user);
+        text_account_balance= (TextView) view.findViewById(R.id.account_balance);
         image_order= (ImageView) view.findViewById(R.id.image_order);
         image_mymoney= (ImageView) view.findViewById(R.id.image_mymoney);
         image_right_scan= (ImageView) view.findViewById(R.id.image_right_scan);
@@ -72,6 +74,9 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         image_scan= (ImageView) view.findViewById(R.id.image_scan);
         image_mycode= (ImageView) view.findViewById(R.id.image_mycode);
         text_company= (TextView) view.findViewById(R.id.text_company_name);
+
+
+
         sp=getActivity().getSharedPreferences("image",Context.MODE_PRIVATE);
         textView_loginmine= (TextView) view.findViewById(R.id.textview_loginmine);
         imageButton_setmine= (ImageButton) view.findViewById(R.id.imagebutton_setmine);
@@ -86,12 +91,16 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         button_query.setOnClickListener(this);
         image_mycode.setOnClickListener(this);
         image_order.setOnClickListener(this);
+
+
         sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
 
         if (sp.getString("roles","").equals("[\"guard\"]")){
             image_scan.setVisibility(View.VISIBLE);
             text_scan.setVisibility(View.VISIBLE);
             image_right_scan.setVisibility(View.VISIBLE);
+//            image_mymoney.setClickable(false);
+//            image_order.setClickable(false);
             image_scan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -138,17 +147,26 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.image_mymoney:
-                Toast.makeText(getActivity(),"暂无内容",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent();
-                intent.setClass(getActivity(),MyBill_Activity.class);
-                startActivity(intent);
+                if (sp.getString("roles","").equals("[\"guard\"]")){
+                    dialog();
+                }else {
+                    Intent intent=new Intent();
+                    intent.setClass(getActivity(),MyBill_Activity.class);
+                    startActivity(intent);
+                }
+
 
                 //我的账户
                 break;
             case R.id.image_order:
-                intent=new Intent();
-                intent.setClass(getActivity(),MyOrder_Activity.class);
-                startActivity(intent);
+                if (sp.getString("roles","").equals("[\"guard\"]")){
+                    dialog();
+                }else {
+                    Intent intent=new Intent();
+                    intent.setClass(getActivity(),MyOrder_Activity.class);
+                    startActivity(intent);
+                }
+
                 break;
             case R.id.imagebutton_setmine:
                 SetDialog();
@@ -163,7 +181,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                     text_company.setClickable(false);
             }else {
                     text_company.setClickable(true);
-                    intent=new Intent();
+                    Intent intent=new Intent();
                     intent.setClass(getActivity(),Select_Company_Activity.class);
                     startActivity(intent);
                 }
@@ -174,10 +192,10 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 text=sp.getString("roles", "");
                 String roles="[\"contributor\"]";
                 if (text.equals(roles)){
-                    intent=new Intent(getActivity(),Query_activity.class);
+                    Intent intent=new Intent(getActivity(),Query_activity.class);
                     startActivity(intent);
                 }else {
-                    intent=new Intent(getActivity(),QueryTwo_activity.class);
+                    Intent intent=new Intent(getActivity(),QueryTwo_activity.class);
                     startActivity(intent);
                 }
 
@@ -185,7 +203,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
 
             case R.id.image_mycode:
                 SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
-                intent=new Intent(getActivity(),MyCode_Activity.class);
+                Intent intent=new Intent(getActivity(),MyCode_Activity.class);
                 intent.putExtra("id",sp.getString("user_id",""));
                 startActivity(intent);
                 break;
@@ -323,7 +341,6 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
              text_change.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-
                         Intent intent=new Intent();
                         intent.setClass(getActivity(),Setting_Activity.class);
                         startActivity(intent);
@@ -364,4 +381,17 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         });
         data.create().show();
     }
+    private void dialog(){
+        AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
+                .setTitle("提示")
+                .setMessage("您当前用户权限不够!!!!!!");
+        dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.create().show();
+    }
+
 }

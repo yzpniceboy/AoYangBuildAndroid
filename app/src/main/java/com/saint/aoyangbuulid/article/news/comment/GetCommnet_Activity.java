@@ -151,6 +151,8 @@ public class GetCommnet_Activity extends BaseActivity {
         if (item.getItemId()==android.R.id.home){
             Intent intent=new Intent(GetCommnet_Activity.this,PostComment_Activity.class);
             startActivity(intent);
+//
+
             overridePendingTransition(R.anim.push_right_in,
                     R.anim.push_right_out);
             GetCommnet_Activity.this.finish();

@@ -7,10 +7,8 @@
         android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -24,9 +22,21 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
-    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
-    <!--<android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
-    <!--<android:uses-permission android:name="android.permission.READ_CALL_LOG" />-->
+    <!-- for all -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- for Baidu and PayPal pay -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!--for Baidu pay -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <!-- for PayPal -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".application.MyApplication"
@@ -166,8 +176,14 @@
             android:screenOrientation="portrait"
             android:label="订单详情"/>
         <activity android:name=".mine.utils.MyBill_Activity"
-            android:label="账户详情"
+            android:label="缴费通知"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mine.utils.Post_Coment_Activity"
+            android:screenOrientation="portrait"
+            android:label="缴费详情"/>
+        <activity android:name=".mine.utils.Posted_Activity"
+            android:screenOrientation="portrait"
+            android:label="已缴详情"/>
 
     </application>
 

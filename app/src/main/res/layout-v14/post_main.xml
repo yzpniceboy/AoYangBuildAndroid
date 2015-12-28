@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+        <TextView
+            android:text="标题"
+            android:textColor="#0099cc"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_title"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:text="date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_time"
+            android:textSize="10sp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@+id/text_title"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="content"
+            android:layout_below="@+id/text_money"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:textColor="@android:color/holo_red_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_money"
+            android:text="money"
+            android:layout_below="@+id/text_time"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:textColor="#cc0000"
+            android:text="未交"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_state"
+            android:layout_alignBottom="@+id/text_title"
+            android:layout_alignRight="@+id/text_money"
+            android:layout_alignEnd="@+id/text_money" />
+</RelativeLayout>

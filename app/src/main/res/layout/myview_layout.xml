@@ -3,15 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    >
 
-    <TextView
-        android:gravity="center"
-        android:text="暂无内容"
-        android:layout_margin="10dp"
+    <com.saint.aoyangbuulid.article.news.mylistview.XListView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/text_along"/>
+        android:layout_height="fill_parent"
+        android:id="@+id/list_view"/>
 
 </RelativeLayout>
