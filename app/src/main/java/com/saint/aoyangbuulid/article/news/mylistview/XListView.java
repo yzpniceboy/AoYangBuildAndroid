@@ -1,12 +1,22 @@
 package com.saint.aoyangbuulid.article.news.mylistview;
 
+/**
+ * @file XListView.java
+ * @package me.maxwin.view
+ * @create Mar 18, 2012 6:28:41 PM
+ * @author Maxwin
+ * @description An ListView support (a) Pull down to refresh, (b) Pull up to load more.
+ * 		Implement IXListViewListener, and see stopRefresh() / stopLoadMore().
+ */
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -15,10 +25,7 @@ import android.widget.TextView;
 
 import com.saint.aoyangbuulid.R;
 
-/**
- * Created by zzh on 15-12-3.
- */
-public class XListView extends ListView implements AbsListView.OnScrollListener {
+public class XListView extends ListView implements OnScrollListener {
 
     private float mLastY = -1; // save event y
     private Scroller mScroller; // used for scroll back
@@ -95,7 +102,7 @@ public class XListView extends ListView implements AbsListView.OnScrollListener 
 
         // init header height
         mHeaderView.getViewTreeObserver().addOnGlobalLayoutListener(
-                new ViewTreeObserver.OnGlobalLayoutListener() {
+                new OnGlobalLayoutListener() {
                     @Override
                     public void onGlobalLayout() {
                         mHeaderViewHeight = mHeaderViewContent.getHeight();
@@ -139,14 +146,10 @@ public class XListView extends ListView implements AbsListView.OnScrollListener 
         if (!mEnablePullLoad) {
             mFooterView.hide();
             mFooterView.setOnClickListener(null);
-            //make sure "pull up" don't show a line in bottom when listview with one page
-            setFooterDividersEnabled(false);
         } else {
             mPullLoading = false;
             mFooterView.show();
             mFooterView.setState(XListViewFooter.STATE_NORMAL);
-            //make sure "pull up" don't show a line in bottom when listview with one page
-            setFooterDividersEnabled(true);
             // both "pull up" and "click" will invoke load more.
             mFooterView.setOnClickListener(new OnClickListener() {
                 @Override
@@ -182,7 +185,6 @@ public class XListView extends ListView implements AbsListView.OnScrollListener 
      *
      * @param time
      */
-    /**设置上次刷新时间*/
     public void setRefreshTime(String time) {
         mHeaderTimeView.setText(time);
     }
@@ -197,7 +199,7 @@ public class XListView extends ListView implements AbsListView.OnScrollListener 
     private void updateHeaderHeight(float delta) {
         mHeaderView.setVisiableHeight((int) delta
                 + mHeaderView.getVisiableHeight());
-        if (mEnablePullRefresh && !mPullRefreshing) { // 未处于刷新状态，更新箭头
+        if (mEnablePullRefresh && !mPullRefreshing) { // 鏈浜庡埛鏂扮姸鎬侊紝鏇存柊绠ご
             if (mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
                 mHeaderView.setState(XListViewHeader.STATE_READY);
             } else {
@@ -242,7 +244,7 @@ public class XListView extends ListView implements AbsListView.OnScrollListener 
         }
         mFooterView.setBottomMargin(height);
 
-//		setSelection(mTotalItemCount - 1); // scroll to bottom
+        // setSelection(mTotalItemCount - 1); // scroll to bottom
     }
 
     private void resetFooterHeight() {
@@ -276,6 +278,8 @@ public class XListView extends ListView implements AbsListView.OnScrollListener 
             case MotionEvent.ACTION_MOVE:
                 final float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
+                // System.out.println("鏁版嵁鐩戞祴锛� + getFirstVisiblePosition() + "---->"
+                // + getLastVisiblePosition());
                 if (getFirstVisiblePosition() == 0
                         && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                     // the first item is showing, header has shown or pull down.
@@ -300,11 +304,11 @@ public class XListView extends ListView implements AbsListView.OnScrollListener 
                         }
                     }
                     resetHeaderHeight();
-                } else if (getLastVisiblePosition() == mTotalItemCount - 1) {
+                }
+                if (getLastVisiblePosition() == mTotalItemCount - 1) {
                     // invoke load more.
                     if (mEnablePullLoad
-                            && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA
-                            && !mPullLoading) {
+                            && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) {
                         startLoadMore();
                     }
                     resetFooterHeight();

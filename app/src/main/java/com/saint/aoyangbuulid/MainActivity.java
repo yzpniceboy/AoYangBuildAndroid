@@ -22,7 +22,6 @@ import com.saint.aoyangbuulid.reserve.Reserve_Fragment;
 import java.util.Timer;
 import java.util.TimerTask;
 //对底部进行操作
-
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -38,8 +37,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public Contact_Fragment contact;
     public Reserve_Fragment reserve;
 //    public Notice_Fragment notice;
-
-
     private  boolean isExit=false;
     private  TimerTask task=null;
     private  Timer timer=null;
