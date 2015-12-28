@@ -2,88 +2,81 @@
 <items version="2" >
 
     <item
-        jar="/home/zzh/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/libammsdk.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-0a2a5cdcd1b8a5867fa30037ba1421940ca5f4d2.jar" />
+        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/libammsdk-cc3059af16cf57cac5233702743097584564a5f1.jar" />
     </item>
     <item
-        jar="/home/zzh/work/澳洋/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/gson-2.4.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="/home/zzh/work/澳洋/app/build/intermediates/pre-dexed/debug/classes-cf09dabaf691d60b16e7f7f724671df894900f92.jar" />
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/gson-2.4-c967e7c861683f1c1269b8e5c5175aa74b3b3a24.jar" />
     </item>
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/zxing.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/zxing-3.2.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="96b67e377ff4637ff1fa3bbe9ad7183773935f39">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/zxing-02662f4bf9ae9de5df932a09f8be44aec15102e7.jar" />
+        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/zxing-3.2.0-66663e075703c5a35d1d26f848d053ecff1c7613.jar" />
     </item>
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/alipaysdk.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/classes-1052b912c27098b9e988b7828efd63bca7c33121.jar" />
+        sha1="0c3384f9877b711c3f0b6556ce9ec7f63dc2426e">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/alipaysdk-5cf0db8ed1d5b15fb44e88a35140c4765fb849a7.jar" />
     </item>
     <item
-        jar="/home/zzh/.gradle/caches/modules-2/files-2.1/com.nostra13.universalimageloader/universal-image-loader/1.9.4/dd9eeb557650c4ad7394df23f0f5cf27a7cfc697/universal-image-loader-1.9.4.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/beecloud-2.1.1.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.4-3f6d54e851cb0b8cc8d21ee89e6a4134f32bbb06.jar" />
+        sha1="fc398e3c1bf88432d160a499dad8a7a3b16f8c8e">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/beecloud-2.1.1-a206e781d95c66c4268b77bd642171cc868dd0f1.jar" />
     </item>
     <item
-        jar="/home/zzh/work/澳洋/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/alipayutdid.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/home/zzh/work/澳洋/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-f2e99c64059b55d367092dd3bfe01b511a2d90bb.jar" />
+        sha1="4345fa0a5a7768f2f9c86aaab7db9e2906765193">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/alipayutdid-4716ccdb6189f970bccda2eced08f7baca473f40.jar" />
     </item>
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/UPPayAssistEx.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-00ad254ef6cf8dadd6a93e77b795b45fd3bab675.jar" />
+        sha1="d63c415d9b8c8d48677fe2253b21180ccc1afa0f">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/UPPayAssistEx-6e3537582d283b48deb0f2230a97c130d1ff46f3.jar" />
     </item>
     <item
-        jar="/home/zzh/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/alipaysecsdk.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="/home/zzh/work/澳洋/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-89c9f6ddc268c6734d6a16a47207f2a5d9898462.jar" />
+        sha1="7413c074c9edf523050267b93d0875151dc4b644">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/alipaysecsdk-6ead4e33d03c3a24f7d4be6d64a7689ae5ee31f7.jar" />
     </item>
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/PayPalAndroidSDK-2.11.2.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/classes-93bfbde6f655b9437b664fca5c996f2015a87eb2.jar" />
+        sha1="60c3be895ef76ec0076fa557f2091f144af20bb0">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/PayPalAndroidSDK-2.11.2-816b0a144bd98172e3e2f227f1922c8f72ba2647.jar" />
     </item>
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/android-support-v4.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/classes-83a3051dd17d2d1e94c53d3309ded4947718342c.jar" />
+        sha1="33b27a8d2a5b87e6eb6c60e87a5374ffbfeacc3a">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/android-support-v4-daa3a51d57edd90e62c95e7dce59f441817626c1.jar" />
     </item>
     <item
-        jar="/home/zzh/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/Cashier_SDK-v4.2.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-95f81e44110ed5a8dae2b2359c2ee13607d84a8c.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/classes-ae0f43d63d43bdc9673985fada36d972122afe45.jar" />
+        sha1="4813e859d0a9ad7034e46d036725cf7872e475d7">
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/Cashier_SDK-v4.2.0-90540e1af316b77da96aa77488526b8a56b37135.jar" />
     </item>
 
 </items>
