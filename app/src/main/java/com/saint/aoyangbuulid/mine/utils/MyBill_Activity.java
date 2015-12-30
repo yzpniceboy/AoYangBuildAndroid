@@ -99,7 +99,6 @@ public class MyBill_Activity extends BaseActivity {
                 intent.putExtra("key_content",content);
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-                MyBill_Activity.this.finish();
             }
         });
         getJson();

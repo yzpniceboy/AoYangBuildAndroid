@@ -102,6 +102,7 @@ public class Query_activity extends BaseActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         data = 1;
                         putJSON();
+                        Query_activity.this.finish();
                     }
                 });
                 dialog.setNegativeButton("不同意", new DialogInterface.OnClickListener() {
@@ -109,6 +110,8 @@ public class Query_activity extends BaseActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         data = -1;
                         putJSON();
+                        Query_activity.this.finish();
+
                     }
                 });
                 dialog.create().show();
@@ -137,7 +140,7 @@ public class Query_activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                System.out.print(response);
+                list.clear();
                 Iterator<String> it = response.keys();
                 while (it.hasNext()) {
                     String key = it.next().toString();

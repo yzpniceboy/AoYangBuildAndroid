@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,8 +81,10 @@ public class News_Fragment extends Fragment {
             , Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.news_layout_main,container,false);
         getLoginJSON();
+
         view_listView= (XListView) view.findViewById(R.id.listview_main);
         getNewsJSON();
+
         view_listView.setPullLoadEnable(true);
 
 /**
@@ -142,9 +145,9 @@ public class News_Fragment extends Fragment {
                 ListView view_list = (ListView) parent;
                 Map<String, Object> m = (Map<String, Object>) view_list.getItemAtPosition(position);
                 String cont = (String) m.get("content");
-                SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-                SharedPreferences.Editor editor=sp.edit();
-                editor.putString("hot_data",cont);
+                SharedPreferences sp = getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("hot_data", cont);
                 editor.commit();
                 news_id = (String) m.get("new_id");
                 Intent intent = new Intent(getActivity(), PostComment_Activity.class);
@@ -211,6 +214,7 @@ public class News_Fragment extends Fragment {
     }
     //幻灯片
     public void getimageJSON(){
+        Log.e("imageJson:"+"===============>","JSONS");
         final AsyncHttpClient imageclient=new AsyncHttpClient();
         imageclient.get(Constant.SERVER_URL + "/wp-json/posts?filter[category_name]=slider", new JsonHttpResponseHandler() {
             @Override
@@ -277,7 +281,8 @@ public class News_Fragment extends Fragment {
         AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
                 .setTitle("提示")
                 .setMessage("您的账号或密码输入有误，请重新输入...");
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+        dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
@@ -286,12 +291,7 @@ public class News_Fragment extends Fragment {
                 editor.commit();
                 Intent intent=new Intent(getActivity(),Login_Activity.class);
                 startActivity(intent);
-
-            }
-        });
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+                getActivity().finish();
                 dialog.dismiss();
             }
         });

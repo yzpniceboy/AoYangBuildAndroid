@@ -186,6 +186,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
                 text=sp.getString("roles", "");
                 String roles="[\"contributor\"]";
+
                 if (text.equals(roles)){
                     Intent intent=new Intent(getActivity(),Query_activity.class);
                     startActivity(intent);
@@ -346,6 +347,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                      editor.clear();
                      editor.commit();
                      startActivity(intent);
+                     getActivity().finish();
                  }
              });
              dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {

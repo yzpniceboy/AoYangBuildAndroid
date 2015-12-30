@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -128,7 +129,8 @@ public class Login_Activity extends Activity implements View.OnClickListener{
                 Toast.makeText(Login_Activity.this,"暂无内容",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.image_exitone:
-                finish();
+                Login_Activity.this.finish();
+                Log.e("key:" + "=====================>", "destroy");
                 break;
 
         }

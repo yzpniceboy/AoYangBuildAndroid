@@ -22,12 +22,13 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:id="@+id/change_user"
-        android:gravity="center_horizontal"
+        android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.09"
         android:layout_alignBottom="@+id/view_line8"
-        android:layout_toRightOf="@+id/text_name" />
+        android:layout_toRightOf="@+id/text_name"
+        android:layout_toEndOf="@+id/text_name" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
@@ -44,8 +45,8 @@
         android:text="@string/changephone"
         android:id="@+id/text_numberphone"
         android:layout_alignTop="@+id/change_phone"
-        android:layout_toLeftOf="@+id/change_user"
-        android:layout_toStartOf="@+id/change_user" />
+        android:layout_alignLeft="@+id/text_name"
+        android:layout_alignStart="@+id/text_name" />
     <TextView
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -53,14 +54,14 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:id="@+id/change_phone"
-        android:gravity="center_horizontal"
+        android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.09"
         android:layout_marginTop="49dp"
         android:layout_below="@+id/view_line8"
-        android:layout_toRightOf="@+id/text_numberphone"
-        android:layout_toEndOf="@+id/text_numberphone" />
+        android:layout_toEndOf="@+id/text_numberphone"
+        android:layout_toRightOf="@+id/text_numberphone" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
@@ -77,8 +78,8 @@
         android:text="@string/changepassed"
         android:id="@+id/text_passed"
         android:layout_alignTop="@+id/change_passedword"
-        android:layout_toLeftOf="@+id/change_phone"
-        android:layout_toStartOf="@+id/change_phone" />
+        android:layout_alignLeft="@+id/text_numberphone"
+        android:layout_alignStart="@+id/text_numberphone" />
     <TextView
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -93,9 +94,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.09"
         android:layout_below="@+id/view_line6"
-        android:layout_toRightOf="@+id/text_passed"
         android:layout_toEndOf="@+id/text_passed"
-        android:layout_marginTop="49dp" />
+        android:layout_marginTop="49dp"
+        android:layout_toRightOf="@+id/text_passed" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"

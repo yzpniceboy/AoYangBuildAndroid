@@ -2,12 +2,12 @@ package com.saint.aoyangbuulid;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -70,7 +70,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             reserve= (Reserve_Fragment) fragmentManager.findFragmentByTag("reserve");
         }
         //可能要将它注释掉
-//        super.onCreate(savedInstanceState);
+
 
     }
     public void initButton(){
@@ -162,7 +162,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     }else{
                     transaction.show(contact);
                     }
-                        break;
+                    break;
 
             }
             transaction.commit();
@@ -193,15 +193,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
             textView_article.setTextColor(Color.parseColor("#82858b"));
 
         }
+    /***
+     *actvity 与 fragment 联动
+     */
 
-    @Override
-    public void onAttachFragment(Fragment fragment) {
-        super.onAttachFragment(fragment);
 
-    }
+//    @Override
+//    public void onAttachFragment(Fragment fragment) {
+//        super.onAttachFragment(fragment);
+//        Log.e("MainActivity:"+"========================>", "AttachFragment");
+//
+//    }
 
+
+
+   /**
+    * 当你按下home 没有销毁activity 时 调用此方法*/
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        Log.e("MainActivity:"+"========================>","SaveInstanceState");
     }
 
     @Override

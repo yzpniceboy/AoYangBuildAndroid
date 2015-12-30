@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,6 @@ import java.util.concurrent.TimeUnit;
 public class BannerView extends LinearLayout {
     //默认图片缓存路径
     private String imageCachePath = "imageloader/Cache";
-
     private Context context;
     private ViewPager viewPager;
     private List<ImageView> imageViews;//图片集合
@@ -42,11 +42,9 @@ public class BannerView extends LinearLayout {
     private ScheduledExecutorService scheduledExecutorService;
     //自动播放
     private boolean isAUTO_PALY=true;
-
     //异步加载图片
     private ImageLoader imgLoader = ImageLoader.getInstance();
     private DisplayImageOptions options;
-
     //数据源
     private List<BannerData> data;
     //更新主UI
@@ -64,9 +62,11 @@ public class BannerView extends LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.bannerview_layout, this, true);
 
         if (isAUTO_PALY){
+            Log.e("PLAY:"+"===============>","isAUTO_PALY");
             start();
+        }else {
+            shutdown();
         }
-
     }
 
     private void initImageLoader() {
@@ -101,12 +101,13 @@ public class BannerView extends LinearLayout {
             dots.get(i).setVisibility(View.VISIBLE);
         }
     }
-
     private void start() {
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
         // 每两秒切换一次图片显示
-        scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 2,
+        scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 3,
                 TimeUnit.SECONDS);
+        Log.e("start:" + "================>", "start");
+
     }
 
     private class ScrollTask implements Runnable {
@@ -132,7 +133,6 @@ public class BannerView extends LinearLayout {
         public void onPageScrolled(int arg0, float arg1, int arg2) {
 
         }
-
         @Override
         public void onPageSelected(int position) {
             currentItem = position;
@@ -147,7 +147,6 @@ public class BannerView extends LinearLayout {
             oldPosition = position;
         }
     }
-
     private class MyPagerAdapter extends PagerAdapter {
         @Override
         public int getCount() {

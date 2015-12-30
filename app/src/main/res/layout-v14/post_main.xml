@@ -43,7 +43,7 @@
             android:layout_alignParentEnd="true" />
         <TextView
             android:textColor="#cc0000"
-            android:text="未交"
+            android:text="未缴"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_state"

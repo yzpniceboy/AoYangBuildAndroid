@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -97,9 +96,8 @@ public class Allcompany_Member extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.e("response===========>",response+"");
                 String user = response.optString("users");
-
+                list.clear();
                 try {
                     JSONObject ob_user = new JSONObject(user);
                     Iterator<String> iterator = ob_user.keys();

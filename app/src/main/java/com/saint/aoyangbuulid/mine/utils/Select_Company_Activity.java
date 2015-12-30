@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -48,8 +49,7 @@ public class Select_Company_Activity extends BaseActivity {
     public List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
     public CompanyAdapter adapter;
     String company_name;
-    String text_data;
-
+    String  text_data;
     private boolean isAUTO_Refresh=true;
     public static  final  int CHANG_REFRESH=1;
     Handler handler=new Handler(){
@@ -75,7 +75,6 @@ public class Select_Company_Activity extends BaseActivity {
         if (isAUTO_Refresh){
             Refresh();
         }
-
         adapter=new CompanyAdapter(this,list);
         view_company.setAdapter(adapter);
         view_company.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -87,9 +86,7 @@ public class Select_Company_Activity extends BaseActivity {
                 final int company_data = (int) map.get("company_id");
                 final CheckBox ck = (CheckBox) view.findViewById(R.id.ck_company);
                 ck.setChecked(true);
-                View view_info = LayoutInflater.from(Select_Company_Activity.this).inflate(R.layout.join_info, null);
-                final EditText et_data = (EditText) view_info.findViewById(R.id.et_data);
-                text_data = et_data.getText().toString();
+                final View view_info = LayoutInflater.from(Select_Company_Activity.this).inflate(R.layout.join_info, null,true);
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(Select_Company_Activity.this)
                         .setTitle("申请")
@@ -98,8 +95,9 @@ public class Select_Company_Activity extends BaseActivity {
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        //申请加入公司
+                        EditText et_data= (EditText) view_info.findViewById(R.id.et_data);
+                        text_data = et_data.getText().toString();
+                       //申请加入公司
                         String url = Constant.SERVER_URL + "/wp-json/pods/application";
                         AsyncHttpClient client = new AsyncHttpClient();
                         RequestParams params = new RequestParams();
@@ -107,11 +105,14 @@ public class Select_Company_Activity extends BaseActivity {
                         client.setBasicAuth(sp.getString("phone", ""), sp.getString("passed", ""), AuthScope.ANY);
                         params.add("company", String.valueOf(company_data));
                         params.add("user", sp.getString("user_id", ""));
+                        System.out.print(text_data);
                         params.add("introduction", text_data);
                         client.post(url, params, new JsonHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
+                                Log.e("postCompany:"+"===============>","onSuccess");
+                                Select_Company_Activity.this.finish();
 
 
                             }
@@ -123,6 +124,7 @@ public class Select_Company_Activity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ck.setChecked(false);
+                        Select_Company_Activity.this.finish();
                         dialog.dismiss();
                     }
                 });

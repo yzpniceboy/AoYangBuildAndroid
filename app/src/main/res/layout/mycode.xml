@@ -12,7 +12,6 @@
         android:layout_alignLeft="@+id/image_code"
         android:layout_alignStart="@+id/image_code" />
     <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="姓名"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +20,6 @@
         android:layout_alignLeft="@+id/textView6"
         android:layout_alignStart="@+id/textView6" />
     <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="电话号码："
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
