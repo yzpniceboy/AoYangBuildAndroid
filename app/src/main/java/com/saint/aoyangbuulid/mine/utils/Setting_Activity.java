@@ -40,15 +40,12 @@ public class Setting_Activity extends BaseActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mine_seeting_layout);
-
         initDate();
         Intent intent=getIntent();
         textView_passed.setText(intent.getStringExtra("passed"));
         SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-
-        textView_user.setText(sp.getString("nickname",""));
-
-
+        String text=sp.getString("new_nickname","");
+        textView_user.setText(text);
     }
 
     public void initDate(){
@@ -86,7 +83,6 @@ public class Setting_Activity extends BaseActivity implements View.OnClickListen
         LayoutInflater inflater=LayoutInflater.from(Setting_Activity.this);
         View view=inflater.inflate(R.layout.changuser_layout, null);
         et_user= (EditText) view.findViewById(R.id.et_user);
-
         AlertDialog.Builder dialog = new AlertDialog.Builder(Setting_Activity.this)
                 .setTitle("更改昵称")
                 .setView(view);

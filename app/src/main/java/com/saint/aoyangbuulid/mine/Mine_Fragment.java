@@ -17,13 +17,19 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.saint.aoyangbuulid.R;
+import com.saint.aoyangbuulid.Utils.Constant;
 import com.saint.aoyangbuulid.login.Login_Activity;
 import com.saint.aoyangbuulid.mine.code.Display_Data_Activity;
 import com.saint.aoyangbuulid.mine.code.MipcaActivityCapture;
@@ -35,11 +41,16 @@ import com.saint.aoyangbuulid.mine.utils.Query_activity;
 import com.saint.aoyangbuulid.mine.utils.Select_Company_Activity;
 import com.saint.aoyangbuulid.mine.utils.Setting_Activity;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.auth.AuthScope;
 
 /**
  * Created by 志浩 on 2015/11/2.
@@ -164,6 +175,10 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.imagebutton_setmine:
+                /**
+                 * 更新用户信息*/
+                getJSON();
+                Log.e("更新用户信息==================>","getJSon()");
                 SetDialog();
                 break;
             case R.id.imageview_round:
@@ -385,5 +400,33 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         });
         dialog.create().show();
     }
+
+
+    /**
+     * 更新用户*/
+    public void getJSON(){
+        String url= Constant.SERVER_URL+"/wp-json/users/me";
+        AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
+        client.setBasicAuth(sp.getString("phone",""),sp.getString("passed",""), AuthScope.ANY);
+        client.get(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                String nick_name = response.optString("nickname");
+                SharedPreferences sp = getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
+                SharedPreferences.Editor editor_id = sp.edit();
+                editor_id.putString("new_nickname", nick_name);
+                editor_id.commit();
+
+
+
+            }
+
+
+        });
+    }
+
 
 }

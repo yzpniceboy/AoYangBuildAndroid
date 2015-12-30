@@ -19,6 +19,7 @@
         android:layout_toStartOf="@+id/image_news" />
 
     <ImageView
+
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:id="@+id/image_news"
