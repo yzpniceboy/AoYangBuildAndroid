@@ -51,6 +51,7 @@ public class PostAdapter extends BaseAdapter {
         }else {
             holder= (Holder) convertView.getTag();
         }
+        holder.text_id=String.valueOf(list.get(position).get("id"));
         holder.text_title.setText(String.valueOf(list.get(position).get("title")));
         holder.text_amount.setText(String.valueOf(list.get(position).get("amount"))+"元");
         holder.text_date.setText(String.valueOf(list.get(position).get("date")));
@@ -58,6 +59,10 @@ public class PostAdapter extends BaseAdapter {
         return convertView;
     }
     public class Holder{
-        TextView text_amount,text_title,text_content,text_date,text;
+        TextView text_amount;
+        TextView text_title;
+        TextView text_content;
+        TextView text_date;
+        String text_id;
     }
 }

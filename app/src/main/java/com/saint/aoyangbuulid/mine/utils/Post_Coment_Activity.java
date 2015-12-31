@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.charge.ChargeSubmit_Activity;
@@ -22,8 +21,6 @@ public class Post_Coment_Activity extends BaseActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_content_main);
-
-
         text_amount= (TextView) findViewById(R.id.text_money);
         text_content= (TextView) findViewById(R.id.text_content);
         text_title= (TextView) findViewById(R.id.text_title);
@@ -34,6 +31,7 @@ public class Post_Coment_Activity extends BaseActivity{
         String date=intent.getStringExtra("key_date");
         amount=intent.getStringExtra("key_amount");
         String content=intent.getStringExtra("key_content");
+//        String id=intent.getStringExtra("id");
 
         text_content.setText(content);
         text_date.setText(date);

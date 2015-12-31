@@ -2,6 +2,7 @@ package com.saint.aoyangbuulid.charge;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
-import com.saint.aoyangbuulid.charge.utils.BillUtils;
+import com.saint.aoyangbuulid.login.Login_Activity;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -196,6 +197,9 @@ public class ChargeSubmit_Activity extends BaseActivity {
             public void onClick(View v) {
                 if (ck_pay.isChecked()==true){
                     loadingDialog.show();
+                    SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
+
+                    String text=sp.getString("bill_id","");
 
                    Map<String,String> mapOptional = new HashMap<String, String>();
                     mapOptional.put("客户端", "安卓");
@@ -203,7 +207,7 @@ public class ChargeSubmit_Activity extends BaseActivity {
                     mapOptional.put("money", "2");
                     BCPay.getInstance(ChargeSubmit_Activity.this).reqAliPaymentAsync("为了联盟安卓支付宝支付测试"
                             ,1
-                            ,BillUtils.genBillNum()
+                            ,"abcdefgh"+sp.getString("bill_id","")
                             ,mapOptional
                             ,bcCallback);
                 }else if (ck_wechat.isChecked()==true){
@@ -213,6 +217,7 @@ public class ChargeSubmit_Activity extends BaseActivity {
                     Map<String, String> mapOptional = new HashMap<String, String>();
 
                     mapOptional.put("testkey1", "测试value值1");
+                    SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
 
                     if (BCPay.isWXAppInstalledAndSupported() &&
                             BCPay.isWXPaySupported()) {
@@ -220,7 +225,7 @@ public class ChargeSubmit_Activity extends BaseActivity {
                         BCPay.getInstance(ChargeSubmit_Activity.this).reqWXPaymentAsync(
                                 "安卓微信支付测试",               //订单标题
                                 1,                           //订单金额(分)
-                                BillUtils.genBillNum(),  //订单流水号
+                                "abcdefgh"+sp.getString("bill_id",""),  //订单流水号
                                 mapOptional,            //扩展参数(可以null)
                                 bcCallback);            //支付完成后回调入口
 

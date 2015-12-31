@@ -92,11 +92,17 @@ public class MyBill_Activity extends BaseActivity {
                 String date= (String) map.get("date");
                 String amount= (String) map.get("amount");
                 String content= (String) map.get("content");
+                String bill_id= (String) map.get("id");
+                SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
+                SharedPreferences.Editor editor=sp.edit();
+                editor.putString("bill_id",bill_id);
+                editor.commit();
                 Intent intent=new Intent(MyBill_Activity.this,Post_Coment_Activity.class);
                 intent.putExtra("key_title",title);
                 intent.putExtra("key_date",date);
                 intent.putExtra("key_amount",amount);
                 intent.putExtra("key_content",content);
+//                intent.putExtra("id",bill_id);
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
@@ -125,6 +131,11 @@ public class MyBill_Activity extends BaseActivity {
                     String v = response.optString(k);
                     try {
                         JSONObject object = new JSONObject(v);
+                        String bill_id=object.optString("ID");
+//                        SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
+//                        SharedPreferences.Editor editor=sp.edit();
+//                        editor.putString("bill_id",bill_id);
+//                        editor.commit();
                         String amount = object.optString("amount");
                         String title = object.optString("post_title");
                         String content = object.optString("post_content");
@@ -134,6 +145,7 @@ public class MyBill_Activity extends BaseActivity {
                         map.put("title", title);
                         map.put("content", content);
                         map.put("date", date);
+                        map.put("id",bill_id);
                         list.add(map);
                         adapter.notifyDataSetChanged();
 

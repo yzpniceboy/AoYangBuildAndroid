@@ -400,8 +400,6 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         });
         dialog.create().show();
     }
-
-
     /**
      * 更新用户*/
     public void getJSON(){

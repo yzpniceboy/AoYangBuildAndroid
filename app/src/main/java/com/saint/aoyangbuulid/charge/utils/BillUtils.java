@@ -13,4 +13,5 @@ public class BillUtils {
     public static String genBillNum() {
         return simpleDateFormat.format(new Date());
     }
+
 }

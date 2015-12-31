@@ -47,16 +47,21 @@ public class PostedAdapter extends BaseAdapter {
             holder.text_content= (TextView)convertView.findViewById(R.id.text_content);
             holder.text_date= (TextView) convertView.findViewById(R.id.text_time);
             holder.text_title= (TextView) convertView.findViewById(R.id.text_title);
+            holder.text_money= (TextView) convertView.findViewById(R.id.text_money);
+            holder.text_state= (TextView) convertView.findViewById(R.id.text_state);
             convertView.setTag(holder);
         }else {
             holder= (Holder) convertView.getTag();
         }
-
-
+        holder.text_state.setText("已缴");
+        holder.text_money.setText(String.valueOf(list.get(position).get("amount")));
+        holder.text_content.setText(String.valueOf(list.get(position).get("content")));
+        holder.text_date.setText(String.valueOf(list.get(position).get("date")));
+        holder.text_title.setText(String.valueOf(list.get(position).get("title")));
         return convertView;
     }
     private class Holder{
-        TextView text_title,text_date,text_content;
+        TextView text_title,text_date,text_content,text_money,text_state;
 
     }
 }
