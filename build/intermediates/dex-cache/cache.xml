@@ -2,74 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/zxing-3.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/zxing-3.2.0-60a861428d7dbd0ac0e9ee22795010212224c874.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e59f8faf210d5b1ad013081d0524056005a9cb15">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/classes-1a0c764c39a0b9ff0a62442ef5fbb1e09118ebcb.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/PayPalAndroidSDK-2.11.2.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/PayPalAndroidSDK-2.11.2.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="60c3be895ef76ec0076fa557f2091f144af20bb0">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/PayPalAndroidSDK-2.11.2-c317826397c822a49762eb7752a78b84596a19b2.jar" />
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/PayPalAndroidSDK-2.11.2-816b0a144bd98172e3e2f227f1922c8f72ba2647.jar" />
     </item>
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/UPPayAssistEx.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/UPPayAssistEx.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="d63c415d9b8c8d48677fe2253b21180ccc1afa0f">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/UPPayAssistEx-815e4f1ab854ff0ce84727a6c246bd4e542f3e0d.jar" />
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/UPPayAssistEx-6e3537582d283b48deb0f2230a97c130d1ff46f3.jar" />
     </item>
     <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/gson-2.4.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/gson-2.4-b15ed6ac1a667d9487085c6428568145a3d80130.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/Cashier_SDK-v4.2.0.jar"
+        jar="/home/zzh/work/AoYangBuildAndroid/app/libs/Cashier_SDK-v4.2.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="4813e859d0a9ad7034e46d036725cf7872e475d7">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/Cashier_SDK-v4.2.0-39815434de728fe765f0838ef06c87486faf2927.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/alipaysecsdk.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="7413c074c9edf523050267b93d0875151dc4b644">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/alipaysecsdk-d728165aef1a9863e2f002fa3367de6e964a09ad.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/alipayutdid.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4345fa0a5a7768f2f9c86aaab7db9e2906765193">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/alipayutdid-be17051b5daa5e98c6f4f899a703578bf9820e7d.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/libammsdk.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/libammsdk-4f4dc27b28e7c9afe0a2b27ecb94103c5733a8f7.jar" />
-    </item>
-    <item
-        jar="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/exploded-aar/AoYangBuildAndroid/sdk/unspecified/jars/libs/alipaysdk.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="0c3384f9877b711c3f0b6556ce9ec7f63dc2426e">
-        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/alipaysdk-d84a9ef0c44c6adfbc00293cd103f420c4e191f0.jar" />
+        <dex dex="/home/zzh/work/AoYangBuildAndroid/app/build/intermediates/pre-dexed/debug/Cashier_SDK-v4.2.0-90540e1af316b77da96aa77488526b8a56b37135.jar" />
     </item>
 
 </items>

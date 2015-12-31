@@ -3,6 +3,8 @@ package com.saint.aoyangbuulid.mine.utils;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,10 +16,17 @@ import com.loopj.android.http.RequestParams;
 import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.Utils.Constant;
+import com.saint.aoyangbuulid.article.news.mylistview.XListView;
 import com.saint.aoyangbuulid.login.Login_Activity;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import cz.msebera.android.httpclient.Header;
 
 /**
@@ -26,10 +35,34 @@ import cz.msebera.android.httpclient.Header;
 public class Posted_Activity extends BaseActivity {
     TextView text_title,text_date,text_content;
     String finished ;
+    XListView listView;
+    List<Map<String,Object>> list=new ArrayList<>();
+    Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.posted_main);
+        listView= (XListView) findViewById(R.id.list_posted);
+        listView.setPullLoadEnable(true);
+        listView.setXListViewListener(new XListView.IXListViewListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
+
+
+
         text_content= (TextView) findViewById(R.id.text_content);
         text_date= (TextView) findViewById(R.id.text_time);
         text_title= (TextView) findViewById(R.id.text_title);
@@ -49,6 +82,7 @@ public class Posted_Activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                list.clear();
                 Iterator<String> iterator = response.keys();
                 while (iterator.hasNext()) {
                     String k = iterator.next().toString();
@@ -59,6 +93,11 @@ public class Posted_Activity extends BaseActivity {
                         String title = object.optString("post_title");
                         String content = object.optString("post_content");
                         String date = object.optString("post_date");
+                        Map<String ,Object> map=new HashMap<String, Object>();
+                        map.put("content",content);
+                        map.put("title",title);
+                        map.put("date",date);
+
                         text_content.setText(content);
                         text_date.setText(date);
                         text_title.setText(title);
