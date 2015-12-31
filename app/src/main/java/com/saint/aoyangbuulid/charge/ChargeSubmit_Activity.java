@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -151,15 +152,13 @@ public class ChargeSubmit_Activity extends BaseActivity {
         ck_wechat= (CheckBox) findViewById(R.id.check_wechat);
         text_money.setText(money);
 
+        //现金
         ck_cash.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    ck_wechat.setClickable(false);
-                    ck_pay.setClickable(false);
-                } else {
-                    ck_wechat.setClickable(true);
-                    ck_pay.setClickable(true);
+                    ck_wechat.setChecked(false);
+                    ck_pay.setChecked(false);
                 }
             }
         });
@@ -169,6 +168,27 @@ public class ChargeSubmit_Activity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    ck_cash.setChecked(false);
+                    ck_wechat.setChecked(false);
+                }
+            }
+        });
+
+        //微信
+        ck_wechat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    ck_pay.setChecked(false);
+                    ck_cash.setChecked(false);
+                }
+            }
+        });
+
+        button_end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ck_pay.isChecked()==true){
                     loadingDialog.show();
                     Map<String, String> mapOptional = new HashMap<String, String>();
                     mapOptional.put("客户端", "安卓");
@@ -182,19 +202,7 @@ public class ChargeSubmit_Activity extends BaseActivity {
                             BillUtils.genBillNum(),
                             mapOptional,
                             bcCallback);
-
-                    ck_cash.setClickable(false);
-                    ck_wechat.setClickable(false);
-                }else {
-                    ck_cash.setClickable(true);
-                    ck_wechat.setClickable(true);
-                }
-            }
-        });
-        ck_wechat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                }else if (ck_wechat.isChecked()==true){
                     loadingDialog.show();
                     //对于微信支付, 手机内存太小会有OutOfResourcesException造成的卡顿, 以致无法完成支付
                     //这个是微信自身存在的问题
@@ -217,11 +225,8 @@ public class ChargeSubmit_Activity extends BaseActivity {
                                 "您尚未安装微信或者安装的微信版本不支持", Toast.LENGTH_LONG).show();
                         loadingDialog.dismiss();
                     }
-                    ck_pay.setClickable(false);
-                    ck_cash.setClickable(false);
                 }else {
-                    ck_pay.setClickable(true);
-                    ck_cash.setClickable(true);
+                    Toast.makeText(ChargeSubmit_Activity.this,"暂不支持此服务",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -277,6 +282,11 @@ public class ChargeSubmit_Activity extends BaseActivity {
 
         //使用百度支付的，在activity结束时detach
         BCPay.detachBaiduPay();
+    }
+    private  void  initCheck(){
+        ck_pay.setChecked(false);
+        ck_cash.setChecked(false);
+        ck_wechat.setChecked(false);
     }
 
 }
