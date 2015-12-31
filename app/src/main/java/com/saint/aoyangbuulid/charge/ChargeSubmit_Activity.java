@@ -44,6 +44,7 @@ public class ChargeSubmit_Activity extends BaseActivity {
     private CheckBox ck_pay,ck_wechat,ck_cash;
     private ProgressDialog loadingDialog;
 
+
 //    支付结果返回入口
     BCCallback bcCallback=new BCCallback() {
         @Override
@@ -62,23 +63,23 @@ public class ChargeSubmit_Activity extends BaseActivity {
                     } else if (result.equals(BCPayResult.RESULT_CANCEL)) {
                         Toast.makeText(ChargeSubmit_Activity.this, "用户取消支付", Toast.LENGTH_LONG).show();
                     } else if (result.equals(BCPayResult.RESULT_FAIL)) {
-                        Log.e("=====================>","自负失败");
+                        Log.e("=====================>","支付失败");
                         String toastMsg = "支付失败, 原因: " + bcPayResult.getErrCode() +
                                 " # " + bcPayResult.getErrMsg() +
                                 " # " + bcPayResult.getDetailInfo();
-                        /**
-                         * 你发布的项目中不应该出现如下错误，此处由于支付宝政策原因，
-                         * 不再提供支付宝支付的测试功能，所以给出提示说明
-                         */
-                        if (bcPayResult.getErrMsg().equals("PAY_FACTOR_NOT_SET") &&
-                                bcPayResult.getDetailInfo().startsWith("支付宝参数")) {
-                            toastMsg = "支付失败：由于支付宝政策原因，故不再提供支付宝支付的测试功能，给您带来的不便，敬请谅解";
-                        }
+//                        /**
+//                         * 你发布的项目中不应该出现如下错误，此处由于支付宝政策原因，
+//                         * 不再提供支付宝支付的测试功能，所以给出提示说明
+//                         */
+//                        if (bcPayResult.getErrMsg().equals("PAY_FACTOR_NOT_SET") &&
+//                                bcPayResult.getDetailInfo().startsWith("支付宝参数")) {
+//                            toastMsg = "支付失败：由于支付宝政策原因，故不再提供支付宝支付的测试功能，给您带来的不便，敬请谅解";
+//                        }
                         /**
                          * 以下是正常流程，请按需处理失败信息
                          */
-                        Toast.makeText(ChargeSubmit_Activity.this, toastMsg, Toast.LENGTH_LONG).show();
-                        Log.e(TAG, toastMsg);
+//                        Toast.makeText(ChargeSubmit_Activity.this, toastMsg, Toast.LENGTH_LONG).show();
+//                        Log.e(TAG, toastMsg);
 //                        if (bcPayResult.getErrMsg().equals(BCPayResult.FAIL_PLUGIN_NOT_INSTALLED) ||
 //                                bcPayResult.getErrMsg().equals(BCPayResult.FAIL_PLUGIN_NEED_UPGRADE)) {
 //                            //银联需要重新安装控件
@@ -109,6 +110,13 @@ public class ChargeSubmit_Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.changeend);
+        initBeeCloud();
+        // 如果用到微信支付，在用到微信支付的Activity的onCreate函数里调用以下函数.
+        // 第二个参数需要换成你自己的微信AppID.
+        String initInfo = BCPay.initWechatPay(ChargeSubmit_Activity.this, "wxf1aa465362b4c8f1");
+        if (initInfo != null) {
+            Toast.makeText(this, "微信初始化失败：" + initInfo, Toast.LENGTH_LONG).show();
+        }
         // 如果调起支付太慢, 可以在这里开启动画, 以progressdialog为例
         loadingDialog = new ProgressDialog(ChargeSubmit_Activity.this);
         loadingDialog.setMessage("启动第三方支付，请稍候...");
@@ -116,15 +124,13 @@ public class ChargeSubmit_Activity extends BaseActivity {
         loadingDialog.setCancelable(true);
         Intent intent=getIntent();
         money=intent.getStringExtra("amount");
-
         initData();
-        initBeeCloud();
 
     }
 
     private void initBeeCloud(){
-
-        BeeCloud.setSandbox(true);
+        // BeeCloud.setSandbox();沙盒模式
+        BeeCloud.setSandbox(false);
         BeeCloud.setAppIdAndSecret("c92a2bb3-5f3b-4c21-9340-28eff0aca577"
                 , "d3aa3a10-50a8-4233-b813-4c9dce224541");
         Log.e("签名=================>", "执行");
@@ -190,18 +196,16 @@ public class ChargeSubmit_Activity extends BaseActivity {
             public void onClick(View v) {
                 if (ck_pay.isChecked()==true){
                     loadingDialog.show();
-                    Map<String, String> mapOptional = new HashMap<String, String>();
+
+                   Map<String,String> mapOptional = new HashMap<String, String>();
                     mapOptional.put("客户端", "安卓");
                     mapOptional.put("consumptioncode", "consumptionCode");
                     mapOptional.put("money", "2");
-                    //发起支付
-                    Log.e("发起支付" + "==============>", "BCPay");
-                    BCPay.getInstance(ChargeSubmit_Activity.this).reqAliPaymentAsync(
-                            "安卓支付宝支付测试",
-                            1,
-                            BillUtils.genBillNum(),
-                            mapOptional,
-                            bcCallback);
+                    BCPay.getInstance(ChargeSubmit_Activity.this).reqAliPaymentAsync("为了联盟安卓支付宝支付测试"
+                            ,1
+                            ,BillUtils.genBillNum()
+                            ,mapOptional
+                            ,bcCallback);
                 }else if (ck_wechat.isChecked()==true){
                     loadingDialog.show();
                     //对于微信支付, 手机内存太小会有OutOfResourcesException造成的卡顿, 以致无法完成支付
@@ -234,7 +238,6 @@ public class ChargeSubmit_Activity extends BaseActivity {
     }
 
     void getBillInfoByID(String id) {
-
         BCQuery.getInstance().queryBillByIDAsync(id,
                 new BCCallback() {
                     @Override
