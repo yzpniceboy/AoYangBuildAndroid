@@ -186,10 +186,10 @@
             android:label="已缴详情"/>
         /**
         * 测试版本 非测试版本不需要*/
-        <activity
-            android:name="cn.beecloud.BCMockPayActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--<activity-->
+            <!--android:name="cn.beecloud.BCMockPayActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"

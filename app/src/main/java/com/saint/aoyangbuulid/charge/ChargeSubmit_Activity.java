@@ -122,8 +122,11 @@ public class ChargeSubmit_Activity extends BaseActivity {
     }
 
     private void initBeeCloud(){
+
         BeeCloud.setSandbox(true);
-        BeeCloud.setAppIdAndSecret("c92a2bb3-5f3b-4c21-9340-28eff0aca577", "14f68043-f4a6-4117-a0e4-add0051482c1");
+        BeeCloud.setAppIdAndSecret("c92a2bb3-5f3b-4c21-9340-28eff0aca577"
+                , "d3aa3a10-50a8-4233-b813-4c9dce224541");
+        Log.e("签名=================>", "执行");
     }
 
     @Override
@@ -171,7 +174,6 @@ public class ChargeSubmit_Activity extends BaseActivity {
                     mapOptional.put("客户端", "安卓");
                     mapOptional.put("consumptioncode", "consumptionCode");
                     mapOptional.put("money", "2");
-
                     //发起支付
                     Log.e("发起支付" + "==============>", "BCPay");
                     BCPay.getInstance(ChargeSubmit_Activity.this).reqAliPaymentAsync(

@@ -34,4 +34,5 @@ dependencies {
     compile files('libs/gson-2.4.jar')
     compile files('libs/libammsdk.jar')
     compile files('libs/beecloud-2.1.1.jar')
+    compile project(':sdk')
 }

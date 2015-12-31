@@ -419,12 +419,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
                 SharedPreferences.Editor editor_id = sp.edit();
                 editor_id.putString("new_nickname", nick_name);
                 editor_id.commit();
-
-
-
             }
-
-
         });
     }
 
