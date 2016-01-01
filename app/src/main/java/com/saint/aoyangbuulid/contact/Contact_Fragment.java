@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,7 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -62,8 +65,8 @@ import cz.msebera.android.httpclient.auth.AuthScope;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view=inflater.inflate(R.layout.contact_cepartment_layout,container,false);
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final View view=inflater.inflate(R.layout.contact_cepartment_layout, container, false);
         view_list= (XListView) view.findViewById(R.id.list_view);
         view_list.setPullLoadEnable(true);
         view_list.setPullRefreshEnable(true);
@@ -100,14 +103,21 @@ import cz.msebera.android.httpclient.auth.AuthScope;
                 }, 2000);
             }
         });
+       view_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               ListView list= (ListView) parent;
+               Map<String,Object> map= (Map<String, Object>) list.getItemAtPosition(position);
+               String phonenumber= (String) map.get("phone");
+               Intent intent=new Intent();
+               intent.setAction("android.intent.action.CALL");
+                intent.setData(Uri.parse("tel:" +phonenumber));
+               startActivity(intent);
+           }
+       });
         getCompanyMember();
         adapter= new CompanyMember_Adapter(getActivity(),list_right);
         view_list.setAdapter(adapter);
-
-
-
-
-
         return view;
     }
     public void getCompanyMember(){
@@ -133,10 +143,19 @@ import cz.msebera.android.httpclient.auth.AuthScope;
                         System.out.print(v);
                         JSONObject ob_v = new JSONObject(v);
                         String display = ob_v.optString("display_name");
-                        System.out.print(display);
-                        Map<String, Object> map = new HashMap<String, Object>();
-                        map.put("dispaly_name", display);
-                        list_right.add(map);
+                        String phone=ob_v.optString("phone");
+                        if (phone.equals("")){
+                            Map<String, Object> map = new HashMap<String, Object>();
+                            map.put("dispaly_name", display);
+                            map.put("phone","暂未设置");
+                            list_right.add(map);
+                        }else {
+                            Map<String, Object> map = new HashMap<String, Object>();
+                            map.put("dispaly_name", display);
+                            map.put("phone",phone);
+                            list_right.add(map);
+                        }
+
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {

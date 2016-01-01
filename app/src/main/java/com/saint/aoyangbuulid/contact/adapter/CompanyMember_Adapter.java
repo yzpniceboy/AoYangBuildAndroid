@@ -51,6 +51,7 @@ public class CompanyMember_Adapter extends BaseAdapter {
         }else {
             holder= (Holder) convertView.getTag();
         }
+        holder.text_phone.setText(String.valueOf(list.get(position).get("phone")));
         holder.text_name.setText(String.valueOf((list.get(position)).get("dispaly_name")));
         return convertView;
     }

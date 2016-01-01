@@ -37,6 +37,8 @@
 
     <!-- for PayPal -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--for phone-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:name=".application.MyApplication"

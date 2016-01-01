@@ -198,9 +198,6 @@ public class ChargeSubmit_Activity extends BaseActivity {
                 if (ck_pay.isChecked()==true){
                     loadingDialog.show();
                     SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-
-                    String text=sp.getString("bill_id","");
-
                    Map<String,String> mapOptional = new HashMap<String, String>();
                     mapOptional.put("客户端", "安卓");
                     mapOptional.put("consumptioncode", "consumptionCode");
