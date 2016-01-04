@@ -1,12 +1,12 @@
 package com.saint.aoyangbuulid;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -23,8 +23,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 //对底部进行操作
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
+//    private static final String EXITACTION = "action.exit";
+//    private ExitReceiver exitReceiver = new ExitReceiver();
     private RelativeLayout relative_artice,relative_reserve
             ,relative_mine,relative_contact;
 
@@ -49,6 +51,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction(EXITACTION);
+//        registerReceiver(exitReceiver, filter);
         initButton();
         //默认
         setTabSelection(0);
@@ -232,4 +237,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
             timer.schedule(task,2000);
         }
     }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        unregisterReceiver(exitReceiver);
+//    }
+//    class ExitReceiver extends BroadcastReceiver {
+//
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            MainActivity.this.finish();
+//        }
+//
+//    }
 }

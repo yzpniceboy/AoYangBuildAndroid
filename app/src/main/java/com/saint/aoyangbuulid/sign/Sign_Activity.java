@@ -1,6 +1,5 @@
 package com.saint.aoyangbuulid.sign;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.Utils.Constant;
 import com.saint.aoyangbuulid.login.Login_Activity;
@@ -35,7 +35,7 @@ import cz.msebera.android.httpclient.Header;
 /**
  * Created by zzh on 15-11-9.
  */
-public class Sign_Activity extends Activity implements View.OnClickListener {
+public class Sign_Activity extends BaseActivity implements View.OnClickListener {
     public ImageButton imageButton_exit, imageButton_getcode, imagebutton, imageButton_registered;
     public CheckBox checkBox;
     public TextView text;
@@ -50,6 +50,7 @@ public class Sign_Activity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_layout);
+        getSupportActionBar().hide();
         //实例化
         et_name = (EditText) findViewById(R.id.edittext_choice_phonenumberext_code);
         et_phone = (EditText) findViewById(R.id.edittext_choice_phonenumber);

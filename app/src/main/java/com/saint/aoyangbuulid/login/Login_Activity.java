@@ -3,6 +3,7 @@ package com.saint.aoyangbuulid.login;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -53,11 +54,21 @@ public class Login_Activity extends Activity implements View.OnClickListener{
     //用来存放帐号密码
     public String p,w,number;
     private ImageView welcomeimage=null;
+    private ProgressDialog loadingDialog;
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+
+        // 如果调起支付太慢, 可以在这里开启动画, 以progressdialog为例
+        loadingDialog = new ProgressDialog(Login_Activity.this);
+        loadingDialog.setMessage("正在连接，请稍候...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(true);
+
+
+
         /**实例化：SharedPreferences
          * */
         SharedPreferences sp=getSharedPreferences(PREFERENCE_NAME,Mode);
@@ -118,6 +129,7 @@ public class Login_Activity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.imagebutton_login:
+                //登陆
                 getJSON();
                 break;
             case R.id.button_sign:
@@ -150,66 +162,66 @@ public class Login_Activity extends Activity implements View.OnClickListener{
  e.printStackTrace();
  }*/
 
-            client.setBasicAuth(p, w, AuthScope.ANY);
-            client.get(url,params, new JsonHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    super.onSuccess(statusCode, headers, response);
-                    System.out.print(response);
-                    sp=getSharedPreferences(PREFERENCE_NAME, Mode);
-                    final SharedPreferences.Editor editor=sp.edit();
-                    editor.putString("phone",p);
-                    editor.putString("passed",w);
-                    editor.putString("response",response+"");
-                    editor.commit();
-                    System.out.print(response);
-                    String nick_name=response.optString("nickname");
-                    String roles=response.optString("roles");
-                    String meta=response.optString("meta");
-                    try {
-                        JSONObject data=new JSONObject(meta);
-                        JSONObject company_data=data.getJSONObject("user_company");
-                        System.out.print(company_data);
-                        String name=company_data.optString("name");
-                        String id=company_data.optString("id");
-                        SharedPreferences sp=getSharedPreferences(PREFERENCE_NAME, Mode);
-                        SharedPreferences.Editor editor_name=sp.edit();
-                        editor_name.putString("company_name",name);
-                        editor_name.putString("company_id_mine",id);
-                        editor_name.commit();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    int user_id=response.optInt("ID");
-                    sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-                    SharedPreferences.Editor editor_id=sp.edit();
-                    editor_id.putString("user_id", user_id + "");
-                    editor_id.putString("nickname", nick_name);
-                    editor_id.putString("roles", roles);
-                    editor_id.commit();
-
-
-                    if (response!=null){
-                        Intent intent=new Intent();
-                        intent.putExtra("phone",p);
-                        intent.putExtra("passed",w);
-                        intent.setClass(Login_Activity.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
+        client.setBasicAuth(p, w, AuthScope.ANY);
+        loadingDialog.show();
+        client.get(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                sp = getSharedPreferences(PREFERENCE_NAME, Mode);
+                final SharedPreferences.Editor editor = sp.edit();
+                editor.putString("phone", p);
+                editor.putString("passed", w);
+                editor.putString("response", response + "");
+                editor.commit();
+                String nick_name = response.optString("nickname");
+                String roles = response.optString("roles");
+                String meta = response.optString("meta");
+                try {
+                    JSONObject data = new JSONObject(meta);
+                    JSONObject company_data = data.getJSONObject("user_company");
+                    System.out.print(company_data);
+                    String name = company_data.optString("name");
+                    String id = company_data.optString("id");
+                    SharedPreferences sp = getSharedPreferences(PREFERENCE_NAME, Mode);
+                    SharedPreferences.Editor editor_name = sp.edit();
+                    editor_name.putString("company_name", name);
+                    editor_name.putString("company_id_mine", id);
+                    editor_name.commit();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                    super.onFailure(statusCode, headers, throwable, errorResponse);
+                int user_id = response.optInt("ID");
+                sp = getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
+                SharedPreferences.Editor editor_id = sp.edit();
+                editor_id.putString("user_id", user_id + "");
+                editor_id.putString("nickname", nick_name);
+                editor_id.putString("roles", roles);
+                editor_id.commit();
+
+
+//                    if (response!=null){
+//                        Intent intent=new Intent();
+//                        intent.putExtra("phone",p);
+//                        intent.putExtra("passed",w);
+//                        intent.setClass(Login_Activity.this,MainActivity.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
 //                    Dialog();
-                    Intent intent=new Intent();
-                    intent.putExtra("phone",p);
+                Intent intent = new Intent();
+                intent.putExtra("phone",p);
                     intent.putExtra("passed",w);
-                    intent.setClass(Login_Activity.this,MainActivity.class);
+                    intent.setClass(Login_Activity.this, MainActivity.class);
                     startActivity(intent);
-                    finish();
+                    Login_Activity.this.finish();
+
                 }
             });
     }

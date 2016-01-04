@@ -1,19 +1,19 @@
 package com.saint.aoyangbuulid.welcomeimage;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
+import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.MainActivity;
 import com.saint.aoyangbuulid.R;
 
 /**
  * Created by zzh on 15-12-17.
  */
-public class Welcoming extends Activity {
+public class Welcoming extends BaseActivity {
     private ImageView welcomeimage;
 
     @Override
@@ -21,6 +21,7 @@ public class Welcoming extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcomeimage);
         welcomeimage= (ImageView) findViewById(R.id.welcomeimage);
+        getSupportActionBar().hide();
 
 //        welcome 动画
         AlphaAnimation animation=new AlphaAnimation(0.3f,1.0f);

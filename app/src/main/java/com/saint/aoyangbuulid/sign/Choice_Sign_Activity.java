@@ -1,12 +1,11 @@
 package com.saint.aoyangbuulid.sign;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
+import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.login.Login_Activity;
 
@@ -14,7 +13,7 @@ import com.saint.aoyangbuulid.login.Login_Activity;
  * Created by zzh on 15-11-9.
  * 777777777777777
  */
-public class Choice_Sign_Activity extends Activity  implements View.OnClickListener{
+public class Choice_Sign_Activity extends BaseActivity implements View.OnClickListener{
     String role=null;
     public ImageButton imageButton_personal
             ,imageButton_enterprise
@@ -26,6 +25,7 @@ public class Choice_Sign_Activity extends Activity  implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choice_sign_layout);
+        getSupportActionBar().hide();
         imageButton_enterprise= (ImageButton) findViewById(R.id.imagebutton_enterprise);
         imageButton_personal= (ImageButton) findViewById(R.id.imagebutton_personal);
         imageButton_login= (ImageButton) findViewById(R.id.imagebutton_logintwo);
@@ -62,8 +62,7 @@ public class Choice_Sign_Activity extends Activity  implements View.OnClickListe
 
                 break;
             case R.id.image_exittwo:
-                Toast.makeText(this,"结束当前页面",Toast.LENGTH_SHORT).show();
-               finish();
+                Choice_Sign_Activity.this.finish();
                 break;
         }
     }

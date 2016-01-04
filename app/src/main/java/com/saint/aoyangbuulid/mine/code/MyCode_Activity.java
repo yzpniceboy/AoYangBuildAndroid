@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.WriterException;
 import com.saint.aoyangbuulid.BaseActivity;
@@ -39,8 +40,13 @@ public class MyCode_Activity extends BaseActivity {
 //            Bitmap bitmap= EncodingHandler.createQRCode(id, 400, BitmapFactory.decodeResource(getResources(),
 //                    Integer.parseInt(sp.getString("image_head", String.valueOf(R.mipmap.aoyang)))));
 //            Bitmap bitmap=EncodingHandler.createQRCode(id,400, BitmapFactory.decodeResource(getResources(), R.mipmap.aoyang));
-            Bitmap bitmap=EncodingHandler.createQRCode(id,400,null);
-            image_code.setImageBitmap(bitmap);
+            if (id.equals("")){
+                Toast.makeText(MyCode_Activity.this,"当前网络不稳定,请检查当前网络",Toast.LENGTH_SHORT).show();
+            }else {
+                Bitmap bitmap=EncodingHandler.createQRCode(id,400,null);
+                image_code.setImageBitmap(bitmap);
+            }
+
 
             text_name.setText(sp.getString("nickname",""));
             text_phone.setText(sp.getString("phone",""));
@@ -63,5 +69,11 @@ public class MyCode_Activity extends BaseActivity {
             MyCode_Activity.this.finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }
