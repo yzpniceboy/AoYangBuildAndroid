@@ -101,6 +101,7 @@ public class Notice_Fragment extends Fragment {
                 intent.putExtra("notice_content", content_notice);
                 intent.putExtra("news_id",news_id);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 
             }
         });

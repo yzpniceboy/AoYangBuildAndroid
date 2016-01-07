@@ -88,7 +88,6 @@ public class PostComment_Activity extends BaseActivity {
                         in.putExtra("id", news_id);
                         in.putExtra("figure", figure_id);
                         startActivity(in);
-
                         overridePendingTransition(R.anim.push_left_in,
                                 R.anim.push_left_out);
                         PostComment_Activity.this.finish();
@@ -122,7 +121,6 @@ public class PostComment_Activity extends BaseActivity {
                         intent.putExtra("id", news_id);
                         intent.putExtra("figure", figure_id);
                         startActivity(intent);
-
                         overridePendingTransition(R.anim.push_left_in,
                                 R.anim.push_left_out);
                         PostComment_Activity.this.finish();

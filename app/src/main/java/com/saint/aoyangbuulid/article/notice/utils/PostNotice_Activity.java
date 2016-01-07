@@ -77,6 +77,8 @@ public class PostNotice_Activity extends BaseActivity  {
 
                     startActivity(in);
 
+                    overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+
 //                    PostNotice_Activity.this.finish();
 
                 }else {
@@ -113,9 +115,8 @@ public class PostNotice_Activity extends BaseActivity  {
 
         if (item.getItemId()==R.id.comment){
             Intent intent=new Intent(PostNotice_Activity.this,GetNotice_Activity.class);
-            intent.putExtra("id",news_id);
+            intent.putExtra("id", news_id);
             startActivity(intent);
-            PostNotice_Activity.this.finish();
             overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             PostNotice_Activity.this.finish();
 
@@ -131,11 +132,13 @@ public class PostNotice_Activity extends BaseActivity  {
 
         client.setBasicAuth(sp.getString("phone",""),sp.getString("passed",""), AuthScope.ANY);
 
-        String url=Constant.SERVER_URL+"/wp-json/posts/"+news_id+"/comments";
+        String url=Constant.SERVER_URL+"/wp-json/posts/"+sp.getString("news_id","")+"/comments";
 
         RequestParams params=new RequestParams();
 
-        params.add("data[content]",text_comments.getText().toString());
+        String text=text_comments.getText().toString();
+
+        params.add("data[content]",text);
 
         params.add("data[author]",sp.getString("nickname",""));
 

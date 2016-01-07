@@ -81,10 +81,8 @@ public class News_Fragment extends Fragment {
             , Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.news_layout_main,container,false);
         getLoginJSON();
-
         view_listView= (XListView) view.findViewById(R.id.listview_main);
         getNewsJSON();
-
         view_listView.setPullLoadEnable(true);
 
 /**
