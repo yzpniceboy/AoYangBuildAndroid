@@ -13,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,7 +59,6 @@ public class Login_Activity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-
         // 如果调起支付太慢, 可以在这里开启动画, 以progressdialog为例
         loadingDialog = new ProgressDialog(Login_Activity.this);
         loadingDialog.setMessage("正在连接，请稍候...");
@@ -130,6 +128,7 @@ public class Login_Activity extends Activity implements View.OnClickListener{
         switch (v.getId()){
             case R.id.imagebutton_login:
                 //登陆
+                loadingDialog.show();
                 getJSON();
                 break;
             case R.id.button_sign:
@@ -142,7 +141,6 @@ public class Login_Activity extends Activity implements View.OnClickListener{
                 break;
             case R.id.image_exitone:
                 Login_Activity.this.finish();
-                Log.e("key:" + "=====================>", "destroy");
                 break;
 
         }
@@ -163,7 +161,6 @@ public class Login_Activity extends Activity implements View.OnClickListener{
  }*/
 
         client.setBasicAuth(p, w, AuthScope.ANY);
-        loadingDialog.show();
         client.get(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -201,14 +198,15 @@ public class Login_Activity extends Activity implements View.OnClickListener{
                 editor_id.commit();
 
 
-//                    if (response!=null){
-//                        Intent intent=new Intent();
-//                        intent.putExtra("phone",p);
-//                        intent.putExtra("passed",w);
-//                        intent.setClass(Login_Activity.this,MainActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                    }
+                    if (response!=null){
+                        loadingDialog.dismiss();
+                        Intent intent=new Intent();
+                        intent.putExtra("phone",p);
+                        intent.putExtra("passed",w);
+                        intent.setClass(Login_Activity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
             }
 
             @Override
