@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
  //    TODO Auto-generated method stub
  //    Log.v("LH", "onSaveInstanceState"+outState);
  //    super.onSaveInstanceState(outState);   //将这一行注释掉，阻止activity保存fragment的状态
- }*/
+// }*/
         if (savedInstanceState!=null){
             article= (Article_Fragment) fragmentManager.findFragmentByTag("article");
             mine= (Mine_Fragment) fragmentManager.findFragmentByTag("mine");
@@ -137,7 +137,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     textView_article.setTextColor(Color.parseColor("#0099cc"));
                     if (article==null){
                         article=new Article_Fragment();
-                        transaction.add(R.id.framelayout,article);
+                        transaction.add(R.id.framelayout,article,"article");
+
                     }else transaction.show(article);
                     break;
                 case 1:
@@ -145,7 +146,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     textView_reserve.setTextColor(Color.parseColor("#0099cc"));
                     if (reserve==null){
                         reserve=new Reserve_Fragment();
-                        transaction.add(R.id.framelayout,reserve);
+                        transaction.add(R.id.framelayout,reserve,"reserve");
                     }else transaction.show(reserve);
                     break;
                 case 2:
@@ -153,7 +154,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     textView_mine.setTextColor(Color.parseColor("#0099cc"));
                     if (mine==null){
                         mine=new Mine_Fragment();
-                        transaction.add(R.id.framelayout,mine);
+                        transaction.add(R.id.framelayout,mine,"mine");
                     }else
                     transaction.show(mine);
 
@@ -163,7 +164,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     textView_contact.setTextColor(Color.parseColor("#0099cc"));
                     if (contact==null){
                         contact=new Contact_Fragment();
-                        transaction.add(R.id.framelayout,contact);
+                        transaction.add(R.id.framelayout,contact,"contact");
                     }else{
                     transaction.show(contact);
                     }
