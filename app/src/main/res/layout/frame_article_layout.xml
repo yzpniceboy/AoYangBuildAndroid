@@ -68,7 +68,6 @@
             android:layout_alignStart="@+id/image_notice"
             android:layout_alignBottom="@+id/imageview" />
     </RelativeLayout>
-
   <FrameLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"

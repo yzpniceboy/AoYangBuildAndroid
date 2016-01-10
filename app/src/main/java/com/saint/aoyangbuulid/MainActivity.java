@@ -138,7 +138,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     if (article==null){
                         article=new Article_Fragment();
                         transaction.add(R.id.framelayout,article,"article");
-
                     }else transaction.show(article);
                     break;
                 case 1:
@@ -203,16 +202,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      *actvity 与 fragment 联动
      */
 
-
-//    @Override
-//    public void onAttachFragment(Fragment fragment) {
-//        super.onAttachFragment(fragment);
-//        Log.e("MainActivity:"+"========================>", "AttachFragment");
-//
-//    }
-
-
-
    /**
     * 当你按下home 没有销毁activity 时 调用此方法*/
     @Override
@@ -238,17 +227,5 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             timer.schedule(task,2000);
         }
     }
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        unregisterReceiver(exitReceiver);
-//    }
-//    class ExitReceiver extends BroadcastReceiver {
-//
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            MainActivity.this.finish();
-//        }
-//
-//    }
+
 }

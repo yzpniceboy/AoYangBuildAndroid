@@ -3,6 +3,7 @@ package com.saint.aoyangbuulid.article.news;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -59,6 +60,7 @@ public class News_Fragment extends Fragment {
     public String content,title,time,image,news_id=null;
     private  SharedPreferences sp;
     private String p,w;
+    private ProgressDialog loading;
     private Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -71,7 +73,6 @@ public class News_Fragment extends Fragment {
                     view_listView.setAdapter(myAdapter);
                     break;
             }
-
         }
     };
 
@@ -80,10 +81,19 @@ public class News_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container
             , Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.news_layout_main,container,false);
-        getLoginJSON();
-        view_listView= (XListView) view.findViewById(R.id.listview_main);
+//        LayoutInflater inflater_loading=LayoutInflater.from(getActivity());
+//        View view_load=inflater_loading.inflate(R.layout.loadingdialog,null);
+        loading=new ProgressDialog(getActivity());
+        loading.setMessage("正在获取最新列表...");
+        loading.setIndeterminate(true);
+//        loading.setView(view_load);
+        loading.setCancelable(false);
+        loading.show();
+
         getNewsJSON();
+        view_listView= (XListView) view.findViewById(R.id.listview_main);
         view_listView.setPullLoadEnable(true);
+        getLoginJSON();
 
 /**
  * 给listview 增加一个Header*/
@@ -104,7 +114,6 @@ public class News_Fragment extends Fragment {
             }
         });
         view_listView.setXListViewListener(new XListView.IXListViewListener() {
-
             //实现下拉数据的加载
             @Override
             public void onRefresh() {
@@ -171,10 +180,11 @@ public class News_Fragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
-//                list.clear();
+
                 int len = response.length();
                 for (int i = 0; i < len; i++) {
                     try {
+                        loading.dismiss();
                         Map<String, Object> map = new HashMap<String, Object>();
                         JSONObject object = response.optJSONObject(i);
                         title = object.optString("title");
@@ -295,6 +305,5 @@ public class News_Fragment extends Fragment {
         });
         dialog.create().show();
     }
-
 
 }

@@ -64,6 +64,7 @@ public class XListView extends ListView implements OnScrollListener {
     // load more.
     private final static float OFFSET_RADIO = 1.8f; // support iOS like pull
     // feature.
+    private  boolean isupdate=true;
 
     /**
      * @param context
@@ -199,7 +200,7 @@ public class XListView extends ListView implements OnScrollListener {
     private void updateHeaderHeight(float delta) {
         mHeaderView.setVisiableHeight((int) delta
                 + mHeaderView.getVisiableHeight());
-        if (mEnablePullRefresh && !mPullRefreshing) { // 鏈浜庡埛鏂扮姸鎬侊紝鏇存柊绠ご
+        if (mEnablePullRefresh && !mPullRefreshing) {
             if (mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
                 mHeaderView.setState(XListViewHeader.STATE_READY);
             } else {
@@ -278,8 +279,7 @@ public class XListView extends ListView implements OnScrollListener {
             case MotionEvent.ACTION_MOVE:
                 final float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
-                // System.out.println("鏁版嵁鐩戞祴锛� + getFirstVisiblePosition() + "---->"
-                // + getLastVisiblePosition());
+
                 if (getFirstVisiblePosition() == 0
                         && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                     // the first item is showing, header has shown or pull down.
@@ -374,5 +374,8 @@ public class XListView extends ListView implements OnScrollListener {
         public void onRefresh();
 
         public void onLoadMore();
+    }
+    public void StartUpdate(){
+
     }
 }
