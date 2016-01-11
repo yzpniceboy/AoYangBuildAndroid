@@ -1,5 +1,6 @@
 package com.saint.aoyangbuulid.article.notice.utils;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ import cz.msebera.android.httpclient.Header;
 public class GetNotice_Activity extends BaseActivity {
     public String id;
     private XListView view_list;
+    private ProgressDialog loadingDialog;
+
     public CommentAdapter adapter;
     private List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
     Handler handler=new Handler(){
@@ -50,6 +53,12 @@ public class GetNotice_Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_comment);
+
+        loadingDialog=new ProgressDialog(GetNotice_Activity.this);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
 
         getJSON();
         view_list= (XListView) findViewById(R.id.new_comment);
@@ -106,6 +115,7 @@ public class GetNotice_Activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
+                loadingDialog.dismiss();
                 System.out.print(response);
                 list.clear();
                 if (!response.equals(JSONObject.NULL)) {

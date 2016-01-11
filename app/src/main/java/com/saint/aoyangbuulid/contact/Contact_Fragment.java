@@ -1,7 +1,10 @@
 package com.saint.aoyangbuulid.contact;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -10,13 +13,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -26,6 +29,7 @@ import com.saint.aoyangbuulid.article.news.mylistview.XListView;
 import com.saint.aoyangbuulid.contact.adapter.CompanyMember_Adapter;
 import com.saint.aoyangbuulid.contact.allcompany.AllCompany_Activity;
 import com.saint.aoyangbuulid.login.Login_Activity;
+import com.saint.aoyangbuulid.mine.utils.Select_Company_Activity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,8 +51,10 @@ import cz.msebera.android.httpclient.auth.AuthScope;
     public class Contact_Fragment extends Fragment  {
     private ImageButton button_navi;
     private XListView view_list;
+    TextView text_null;
     public CompanyMember_Adapter adapter;
     private static final  int UPDATA=1;
+    private ProgressDialog loadingDialog;
     public List<Map<String,Object>> list_right=new ArrayList<Map<String,Object>>();
     Handler handler=new Handler(){
         @Override
@@ -67,6 +73,13 @@ import cz.msebera.android.httpclient.auth.AuthScope;
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view=inflater.inflate(R.layout.contact_cepartment_layout, container, false);
+
+
+        loadingDialog=new ProgressDialog(getActivity());
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
         view_list= (XListView) view.findViewById(R.id.list_view);
         view_list.setPullLoadEnable(true);
         view_list.setPullRefreshEnable(true);
@@ -123,13 +136,14 @@ import cz.msebera.android.httpclient.auth.AuthScope;
     public void getCompanyMember(){
         SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
         String url= Constant.SERVER_URL+"/wp-json/pods/company/"+sp.getString("company_id_mine","");
-        Log.e("Key================>",url);
         AsyncHttpClient client=new AsyncHttpClient();
-        client.setBasicAuth(sp.getString("phone",""),sp.getString("passed",""), AuthScope.ANY);
+        client.setBasicAuth(sp.getString("phone", ""), sp.getString("passed", ""), AuthScope.ANY);
         client.get(url, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                view_list.setVisibility(View.VISIBLE);
+                loadingDialog.dismiss();
                 System.out.print(response);
                 list_right.clear();
                 try {
@@ -161,10 +175,13 @@ import cz.msebera.android.httpclient.auth.AuthScope;
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
+                SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
+                if (sp.getString("company_name","").equals("")) {
+                    Dialog();
+                }
             }
         });
+
     }
     private void onLoad(){
         SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
@@ -173,5 +190,19 @@ import cz.msebera.android.httpclient.auth.AuthScope;
         view_list.stopLoadMore();
         view_list.setRefreshTime(time);
     }
-
+    private void Dialog(){
+        AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
+                .setMessage("您暂时还不属于任何一家公司,赶加入入吧!!!!!")
+                .setCancelable(false)
+                .setTitle("提示");
+        dialog.setPositiveButton("加入", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(getActivity(), Select_Company_Activity.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+        dialog.create().show();
+    }
 }

@@ -2,6 +2,7 @@ package com.saint.aoyangbuulid.article.notice;
 
 import android.annotation.TargetApi;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -45,6 +46,7 @@ public class Notice_Fragment extends Fragment {
     public List<Map<String,Object>> list_notice=new ArrayList<Map<String,Object>>();
     public NoticeAdapter mNoticeAdapter;
     public String no_title,no_content,no_date,no_excerpt,no_id;
+    private ProgressDialog loadingDialog;
     Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -57,6 +59,13 @@ public class Notice_Fragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.notice,container,false);
+
+        loadingDialog=new ProgressDialog(getActivity());
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
+
         view_notice= (XListView) view.findViewById(R.id.listview_notice);
         getNoticeJSON();
         view_notice.setPullLoadEnable(true);
@@ -111,13 +120,14 @@ public class Notice_Fragment extends Fragment {
     }
 
     public void getNoticeJSON(){
+
         AsyncHttpClient notice_client=new AsyncHttpClient();
         notice_client.get(Constant.SERVER_URL+"/wp-json/posts?filter[category_name]=notice",new JsonHttpResponseHandler(){
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
-                System.out.print(response);
+                loadingDialog.dismiss();
                 list_notice.clear();
                 for (int n=0;n<response.length();n++){
                     try {

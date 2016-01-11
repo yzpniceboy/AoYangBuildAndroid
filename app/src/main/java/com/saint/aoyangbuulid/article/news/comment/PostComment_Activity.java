@@ -39,7 +39,7 @@ public class PostComment_Activity extends BaseActivity {
     public ImageButton send_button;
     public EditText text_send;
     public FragmentManager fragmentManager=getFragmentManager();
-    public String view_content,title,hot_data,notice_content,news_id,figure_id,new_data;
+    public String view_content,title,hot_data,notice_content,news_id,figure_id,new_data,text;
     private WebView web_content;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -84,13 +84,16 @@ public class PostComment_Activity extends BaseActivity {
                 public void onClick(View v) {
                     if (text_send.getText().toString().length()!=0){
                         postCommentJSON();
-                        Intent in = new Intent(PostComment_Activity.this, GetCommnet_Activity.class);
-                        in.putExtra("id", news_id);
-                        in.putExtra("figure", figure_id);
-                        startActivity(in);
-                        overridePendingTransition(R.anim.push_left_in,
-                                R.anim.push_left_out);
-                        PostComment_Activity.this.finish();
+                        text_send.setText("");
+                        postCommentJSON();
+                        Toast.makeText(PostComment_Activity.this,"评论成功,请点击评论查看详情",Toast.LENGTH_SHORT).show();
+//                        Intent in = new Intent(PostComment_Activity.this, GetCommnet_Activity.class);
+//                        in.putExtra("id", news_id);
+//                        in.putExtra("figure", figure_id);
+//                        startActivity(in);
+//                        overridePendingTransition(R.anim.push_left_in,
+//                                R.anim.push_left_out);
+//                        PostComment_Activity.this.finish();
 
                     }else {
                         Toast.makeText(PostComment_Activity.this,"评论不能不能为空",Toast.LENGTH_SHORT).show();
@@ -143,11 +146,11 @@ public class PostComment_Activity extends BaseActivity {
 
 
     public  void postCommentJSON(){
-        final String text=text_send.getText().toString();
+        text=text_send.getText().toString();
         SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
-        if (news_id==null){
-            news_id=figure_id;
-        }
+//        if (news_id==null){
+//            news_id=figure_id;
+//        }
         String url=Constant.SERVER_URL+"/wp-json/posts/"+news_id+"/comments";
         AsyncHttpClient client=new AsyncHttpClient();
         client.setBasicAuth(sp.getString("phone", ""), sp.getString("passed", ""), AuthScope.ANY);

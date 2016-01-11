@@ -36,13 +36,11 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
-
-
         <com.saint.aoyangbuulid.article.news.mylistview.XListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/list_view"/>
-
+            android:id="@+id/list_view"
+            android:visibility="gone"/>
 
             </LinearLayout>
 

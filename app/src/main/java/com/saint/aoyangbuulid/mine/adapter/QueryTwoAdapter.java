@@ -54,7 +54,7 @@ public class QueryTwoAdapter extends BaseAdapter {
         holder.text_name.setText(String.valueOf((list.get(position)).get("company_name")));
         holder.approved= (String) list.get(position).get("approved");
         if (holder.approved.equals("0")){
-            holder.text_roles.setText("未审核");
+            holder.text_roles.setText("审核中...");
         }else {
             if (holder.approved.equals("1")){
                 holder.text_roles.setText("通过");

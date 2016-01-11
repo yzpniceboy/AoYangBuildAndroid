@@ -1,5 +1,6 @@
 package com.saint.aoyangbuulid.mine.utils;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,15 +8,17 @@ import android.os.Message;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.Utils.Constant;
+import com.saint.aoyangbuulid.article.news.mylistview.XListView;
 import com.saint.aoyangbuulid.login.Login_Activity;
 import com.saint.aoyangbuulid.mine.adapter.QueryTwoAdapter;
-import com.saint.aoyangbuulid.article.news.mylistview.XListView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +40,9 @@ public class QueryTwo_activity extends BaseActivity {
     public QueryTwoAdapter adapter;
     String company_name;
     public XListView list_view;
+    private ProgressDialog loadingDialog;
+    private TextView text_null;
+
     List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
     Handler handler=new Handler(){
         @Override
@@ -50,6 +56,12 @@ public class QueryTwo_activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.querytwo_layout);
+        text_null= (TextView) findViewById(R.id.text_null);
+        loadingDialog=new ProgressDialog(QueryTwo_activity.this,ProgressDialog.STYLE_SPINNER);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(true);
+        loadingDialog.show();
         getJSON();
         list_view= (XListView) findViewById(R.id.list_two_query);
         list_view.setPullLoadEnable(true);
@@ -86,13 +98,16 @@ public class QueryTwo_activity extends BaseActivity {
     public void getJSON(){
         String url= Constant.SERVER_URL+"/wp-json/pods/application";
         SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-
         AsyncHttpClient client=new AsyncHttpClient();
-        client.setBasicAuth(sp.getString("phone",""),sp.getString("passed",""), AuthScope.ANY);
+        client.setBasicAuth(sp.getString("phone", ""), sp.getString("passed", ""), AuthScope.ANY);
         client.get(url, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                text_null.setVisibility(View.GONE);
+                list_view.setVisibility(View.VISIBLE);
+                loadingDialog.dismiss();
+                list.clear();
                 System.out.print(response);
                 Iterator<String> it = response.keys();
                 while (it.hasNext()) {
@@ -125,10 +140,16 @@ public class QueryTwo_activity extends BaseActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         });
+
+        if (text_null.getVisibility()==View.VISIBLE){
+
+            text_null.setText("申请状态");
+            loadingDialog.dismiss();
+        }
+
     }
     private void onLoad(){
         SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");

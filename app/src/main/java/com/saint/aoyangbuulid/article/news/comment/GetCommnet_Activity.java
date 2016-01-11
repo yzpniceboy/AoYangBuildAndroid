@@ -1,5 +1,6 @@
 package com.saint.aoyangbuulid.article.news.comment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,6 +35,7 @@ import cz.msebera.android.httpclient.Header;
 public class GetCommnet_Activity extends BaseActivity {
     public CommentAdapter adapter;
     public XListView new_commen_view;
+    private ProgressDialog loadingDialog;
     public  String id;
     public static final int CHANGE_COMMENT=1;
     public List<Map<String,Object>> list_data=new ArrayList<Map<String,Object>>();
@@ -55,7 +57,13 @@ public class GetCommnet_Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_comment);
+        loadingDialog=new ProgressDialog(GetCommnet_Activity.this,ProgressDialog.STYLE_SPINNER);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
         new_commen_view= (XListView) findViewById(R.id.new_comment);
+
         new_commen_view.setPullLoadEnable(true);
         new_commen_view.setXListViewListener(new XListView.IXListViewListener() {
             //下拉
@@ -101,6 +109,7 @@ public class GetCommnet_Activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
+                loadingDialog.dismiss();
                 list_data.clear();
                 if (!response.equals(JSONObject.NULL)){
                     for (int i=0;i<response.length();i++){

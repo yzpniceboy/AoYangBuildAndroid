@@ -1,5 +1,6 @@
 package com.saint.aoyangbuulid.mine.code;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ import cz.msebera.android.httpclient.auth.AuthScope;
 public class Display_Data_Activity extends BaseActivity {
     XListView view;
     String data;
+    private ProgressDialog loadingDialog;
+
     private List<Map<String , Object>>  list=new ArrayList<Map<String ,Object>>();
     public MipcaAdapterCapture adapterCapture;
     Handler handler=new Handler(){
@@ -53,6 +56,11 @@ public class Display_Data_Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_company);
+        loadingDialog= new ProgressDialog(Display_Data_Activity.this);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
         view= (XListView) findViewById(R.id.list_company);
         Intent  intent=getIntent();
         data=intent.getStringExtra("key_data");
@@ -98,6 +106,7 @@ public class Display_Data_Activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                loadingDialog.dismiss();
                 list.clear();
                 System.out.print(response);
                 String user_name = response.optString("display_name");

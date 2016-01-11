@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:padding="10dp">
     <TextView
+        android:textColor="#0099cc"
         android:hint="公司名称"
         android:textSize="20sp"
         android:layout_width="wrap_content"

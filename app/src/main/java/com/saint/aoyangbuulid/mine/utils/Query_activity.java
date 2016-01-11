@@ -1,6 +1,7 @@
 package com.saint.aoyangbuulid.mine.utils;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -41,8 +43,10 @@ import cz.msebera.android.httpclient.auth.AuthScope;
 public class Query_activity extends BaseActivity {
     public int data;
     public XListView view_list;
+    private ProgressDialog loadingDialog;
     public Query_Adpater adapter;
     public List<Map<String,Object>> list=new ArrayList<Map<String ,Object>>();
+    TextView text_null;
     Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -58,8 +62,14 @@ public class Query_activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.query_layout);
-        getJSON();
+        text_null= (TextView) findViewById(R.id.text_null);
 
+        loadingDialog=new ProgressDialog(Query_activity.this,ProgressDialog.STYLE_SPINNER);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(true);
+        loadingDialog.show();
+        getJSON();
         view_list= (XListView) findViewById(R.id.list_query);
         view_list.setPullLoadEnable(true);
         view_list.setXListViewListener(new XListView.IXListViewListener() {
@@ -131,15 +141,18 @@ public class Query_activity extends BaseActivity {
     /**查询提交的申请*/
     public void getJSON(){
         final SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
-
         String url= Constant.SERVER_URL+"/wp-json/pods/application";
         AsyncHttpClient client=new AsyncHttpClient();
         client.setBasicAuth(sp.getString("phone", ""), sp.getString("passed", ""), AuthScope.ANY);
         RequestParams params=new RequestParams();
+
         client.get(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                text_null.setVisibility(View.GONE);
+                view_list.setVisibility(View.VISIBLE);
+                loadingDialog.dismiss();
                 list.clear();
                 Iterator<String> it = response.keys();
                 while (it.hasNext()) {
@@ -147,10 +160,10 @@ public class Query_activity extends BaseActivity {
                     String v = response.optString(key);
                     try {
                         JSONObject object = new JSONObject(v);
-                        approved_id=object.optString("id");
-                        String user_info=object.optString("user");
-                        JSONObject user=new JSONObject(user_info);
-                        String user_name=user.optString("display_name");
+                        approved_id = object.optString("id");
+                        String user_info = object.optString("user");
+                        JSONObject user = new JSONObject(user_info);
+                        String user_name = user.optString("display_name");
                         String company = object.getString("company");
                         JSONObject data = new JSONObject(company);
                         Iterator<String> iterator = data.keys();
@@ -171,13 +184,20 @@ public class Query_activity extends BaseActivity {
                     }
                 }
             }
+
         });
+        if (text_null.getVisibility()==View.VISIBLE){
+
+            text_null.setText("暂无申请");
+            loadingDialog.dismiss();
+        }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
+        inflater.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -202,6 +222,7 @@ public class Query_activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                loadingDialog.dismiss();
                 System.out.print(response);
 
             }

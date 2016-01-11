@@ -1,5 +1,6 @@
 package com.saint.aoyangbuulid.mine.utils;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class MyBill_Activity extends BaseActivity {
     List<Map<String,Object>> list=new ArrayList<>();
     TextView text;
     PostAdapter adapter;
+    ProgressDialog loadingDialog;
     Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -56,6 +58,11 @@ public class MyBill_Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myview_layout);
+        loadingDialog = new ProgressDialog(MyBill_Activity.this);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
         view_list= (XListView) findViewById(R.id.list_view);
         view_list.setPullLoadEnable(true);
         view_list.setXListViewListener(new XListView.IXListViewListener() {
@@ -123,6 +130,7 @@ public class MyBill_Activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                loadingDialog.dismiss();
                 list.clear();
                 System.out.print(response + "");
                 Iterator<String> iterator = response.keys();

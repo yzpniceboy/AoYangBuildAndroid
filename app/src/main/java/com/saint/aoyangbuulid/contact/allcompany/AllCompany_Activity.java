@@ -1,5 +1,6 @@
 package com.saint.aoyangbuulid.contact.allcompany;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,6 +41,8 @@ public class AllCompany_Activity extends BaseActivity {
     private XListView view_company;
     private List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
     private AllCompany_Adapter adapter;
+    private ProgressDialog loadingDialog;
+
     Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -53,6 +56,11 @@ public class AllCompany_Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.allcompany_layout);
+        loadingDialog=new ProgressDialog(AllCompany_Activity.this);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
 
         view_company= (XListView) findViewById(R.id.all_company_list);
         view_company.setPullLoadEnable(true);
@@ -107,6 +115,7 @@ public class AllCompany_Activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                loadingDialog.dismiss();
                 list.clear();
                 Iterator<String> iterator = response.keys();
                 while (iterator.hasNext()) {

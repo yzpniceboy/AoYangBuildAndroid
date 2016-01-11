@@ -70,14 +70,15 @@ public class PostNotice_Activity extends BaseActivity  {
             public void onClick(View v) {
 
                 if (text_comments.getText().toString().length()!=0) {
-
+                    text_comments.setText("");
                     PostJson();
+                    Toast.makeText(PostNotice_Activity.this,"发表成功,请点击评论查看详情...",Toast.LENGTH_SHORT).show();
 
-                    Intent in = new Intent(PostNotice_Activity.this, GetNotice_Activity.class);
-
-                    startActivity(in);
-
-                    overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+//                    Intent in = new Intent(PostNotice_Activity.this, GetNotice_Activity.class);
+//
+//                    startActivity(in);
+//
+//                    overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 
 //                    PostNotice_Activity.this.finish();
 

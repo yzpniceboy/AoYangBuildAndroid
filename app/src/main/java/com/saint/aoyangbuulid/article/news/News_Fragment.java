@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,20 +75,23 @@ public class News_Fragment extends Fragment {
         }
     };
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container
             , Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.news_layout_main,container,false);
-//        LayoutInflater inflater_loading=LayoutInflater.from(getActivity());
-//        View view_load=inflater_loading.inflate(R.layout.loadingdialog,null);
-        loading=new ProgressDialog(getActivity());
+        loading=new ProgressDialog(getActivity(),ProgressDialog.STYLE_SPINNER);
         loading.setMessage("正在获取最新列表...");
         loading.setIndeterminate(true);
-//        loading.setView(view_load);
         loading.setCancelable(false);
         loading.show();
 
+//        loading.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        loading.setContentView(R.layout.loadingdialog);
+//        loading.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
+//                , WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getNewsJSON();
         view_listView= (XListView) view.findViewById(R.id.listview_main);
         view_listView.setPullLoadEnable(true);
@@ -129,7 +131,6 @@ public class News_Fragment extends Fragment {
                 }, 2000);
 
             }
-
             // onLoadMore中实现上拉加载更多的数据加载
             @Override
             public void onLoadMore() {
@@ -180,7 +181,6 @@ public class News_Fragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 super.onSuccess(statusCode, headers, response);
-
                 int len = response.length();
                 for (int i = 0; i < len; i++) {
                     try {
@@ -206,13 +206,12 @@ public class News_Fragment extends Fragment {
                         myAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {
 //                        Toast.makeText(getActivity(), "出错拉!!!!!!", Toast.LENGTH_SHORT).show();
-
                     }
                 }
             }
-
         });
     }
+
     private void onLoad(){
         SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
         String time=dateFormat.format(new java.util.Date());
@@ -222,7 +221,6 @@ public class News_Fragment extends Fragment {
     }
     //幻灯片
     public void getimageJSON(){
-        Log.e("imageJson:"+"===============>","JSONS");
         final AsyncHttpClient imageclient=new AsyncHttpClient();
         imageclient.get(Constant.SERVER_URL + "/wp-json/posts?filter[category_name]=slider", new JsonHttpResponseHandler() {
             @Override
@@ -231,7 +229,6 @@ public class News_Fragment extends Fragment {
                 try {
                     for (int m = 0; m < response.length(); m++) {
                         JSONObject object = response.optJSONObject(m);
-
                         JSONObject feature = object.optJSONObject("featured_image");
                         //判断图片资源是否为空
                         if (!feature.optString("source").equals(JSONObject.NULL)) {
@@ -276,8 +273,8 @@ public class News_Fragment extends Fragment {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
 
-            }
 
+            }
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);

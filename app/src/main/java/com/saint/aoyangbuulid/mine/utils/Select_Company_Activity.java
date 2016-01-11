@@ -1,6 +1,7 @@
 package com.saint.aoyangbuulid.mine.utils;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +47,7 @@ import cz.msebera.android.httpclient.auth.AuthScope;
  */
 public class Select_Company_Activity extends BaseActivity {
     public XListView view_company;
+    private ProgressDialog loadingDialog;
     public List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
     public CompanyAdapter adapter;
     String company_name;
@@ -62,13 +64,18 @@ public class Select_Company_Activity extends BaseActivity {
                     view_company.setAdapter(adapter);
                     break;
             }
-
         }
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_company);
+        loadingDialog=new ProgressDialog(Select_Company_Activity.this,ProgressDialog.STYLE_SPINNER);
+        loadingDialog.setMessage("正在获取最新列表...");
+        loadingDialog.setIndeterminate(true);
+        loadingDialog.setCancelable(false);
+        loadingDialog.show();
+
         view_company= (XListView) findViewById(R.id.list_company);
         view_company.setPullLoadEnable(true);
         getCompanyJSON();
@@ -90,6 +97,7 @@ public class Select_Company_Activity extends BaseActivity {
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(Select_Company_Activity.this)
                         .setTitle("申请")
+                        .setCancelable(false)
                         .setMessage("申请加入" + company_name + "?")
                         .setView(view_info);
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -169,6 +177,7 @@ public class Select_Company_Activity extends BaseActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                loadingDialog.dismiss();
                 list.clear();
                 System.out.print(response);
                 Iterator<String> iterator = response.keys();

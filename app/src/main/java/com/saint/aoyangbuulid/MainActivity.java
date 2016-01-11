@@ -3,6 +3,7 @@ package com.saint.aoyangbuulid;
 import android.annotation.TargetApi;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.saint.aoyangbuulid.article.Article_Fragment;
 import com.saint.aoyangbuulid.contact.Contact_Fragment;
+import com.saint.aoyangbuulid.login.Login_Activity;
 import com.saint.aoyangbuulid.mine.Mine_Fragment;
 import com.saint.aoyangbuulid.reserve.Reserve_Fragment;
 
@@ -161,12 +163,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 case 3:
                     imagecontact_button.setImageResource(R.mipmap.contact_icon);
                     textView_contact.setTextColor(Color.parseColor("#0099cc"));
-                    if (contact==null){
-                        contact=new Contact_Fragment();
-                        transaction.add(R.id.framelayout,contact,"contact");
-                    }else{
-                    transaction.show(contact);
-                    }
+                    SharedPreferences sp=getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
+                        if (contact==null){
+                            contact=new Contact_Fragment();
+                            transaction.add(R.id.framelayout,contact,"contact");
+                        }else{
+                            transaction.show(contact);
+                        }
+
+
                     break;
 
             }
@@ -227,5 +232,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             timer.schedule(task,2000);
         }
     }
+
 
 }
