@@ -164,7 +164,7 @@ public class Allcompany_Member extends BaseActivity {
         if (item.getItemId()==android.R.id.home){
             Intent intent=new Intent(Allcompany_Member.this,AllCompany_Activity.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
+//            overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
             Allcompany_Member.this.finish();
         }
         return super.onOptionsItemSelected(item);

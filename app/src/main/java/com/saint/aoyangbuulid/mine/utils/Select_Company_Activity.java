@@ -1,6 +1,5 @@
 package com.saint.aoyangbuulid.mine.utils;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,9 +24,9 @@ import com.loopj.android.http.RequestParams;
 import com.saint.aoyangbuulid.BaseActivity;
 import com.saint.aoyangbuulid.R;
 import com.saint.aoyangbuulid.Utils.Constant;
+import com.saint.aoyangbuulid.article.news.mylistview.XListView;
 import com.saint.aoyangbuulid.login.Login_Activity;
 import com.saint.aoyangbuulid.mine.adapter.CompanyAdapter;
-import com.saint.aoyangbuulid.article.news.mylistview.XListView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +94,7 @@ public class Select_Company_Activity extends BaseActivity {
                 ck.setChecked(true);
                 final View view_info = LayoutInflater.from(Select_Company_Activity.this).inflate(R.layout.join_info, null,true);
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Select_Company_Activity.this)
+                android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(Select_Company_Activity.this)
                         .setTitle("申请")
                         .setCancelable(false)
                         .setMessage("申请加入" + company_name + "?")
@@ -159,7 +158,6 @@ public class Select_Company_Activity extends BaseActivity {
                 intent.setClass(Select_Company_Activity.this,PostCompany_Activity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
-//                Select_Company_Activity.this.finish();
                 break;
         }
 

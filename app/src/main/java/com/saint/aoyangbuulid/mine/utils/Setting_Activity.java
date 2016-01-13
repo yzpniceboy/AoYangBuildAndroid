@@ -1,6 +1,5 @@
 package com.saint.aoyangbuulid.mine.utils;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -35,7 +34,7 @@ public class Setting_Activity extends BaseActivity implements View.OnClickListen
     public TextView textView_user,textView_phone,textView_passed;
     public String user_name,phonenumber;
     public EditText et_user;
-    public Button button;
+    public ImageButton button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +51,7 @@ public class Setting_Activity extends BaseActivity implements View.OnClickListen
         textView_passed= (TextView) findViewById(R.id.change_passedword);
         textView_phone= (TextView) findViewById(R.id.change_phone);
         textView_user= (TextView) findViewById(R.id.change_user);
-        button= (Button) findViewById(R.id.btn_sure);
+        button= (ImageButton) findViewById(R.id.btn_sure);
         textView_user.setOnClickListener(this);
         textView_phone.setOnClickListener(this);
         textView_passed.setOnClickListener(this);
@@ -83,7 +82,7 @@ public class Setting_Activity extends BaseActivity implements View.OnClickListen
         LayoutInflater inflater=LayoutInflater.from(Setting_Activity.this);
         View view=inflater.inflate(R.layout.changuser_layout, null);
         et_user= (EditText) view.findViewById(R.id.et_user);
-        AlertDialog.Builder dialog = new AlertDialog.Builder(Setting_Activity.this)
+        android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(Setting_Activity.this)
                 .setTitle("更改昵称")
                 .setView(view);
 
@@ -110,7 +109,7 @@ public class Setting_Activity extends BaseActivity implements View.OnClickListen
         LayoutInflater inflaterphone=LayoutInflater.from(Setting_Activity.this);
         View p_view=inflaterphone.inflate(R.layout.changuser_layout, null);
         et_user= (EditText) p_view.findViewById(R.id.et_user);
-        AlertDialog.Builder dialog = new AlertDialog.Builder(Setting_Activity.this)
+        android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(Setting_Activity.this)
                 .setTitle("更改手机号码")
                 .setView(p_view);
 

@@ -377,7 +377,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         LayoutInflater inflater=LayoutInflater.from(getActivity());
         View view_data=inflater.inflate(R.layout.myview_layout,null);
 
-        final AlertDialog.Builder data=new AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
+        final android.support.v7.app.AlertDialog.Builder data=new android.support.v7.app.AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
                 .setTitle("信息")
                 .setView(view_data);
         data.setNegativeButton("确定", new DialogInterface.OnClickListener() {
@@ -389,7 +389,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         data.create().show();
     }
     private void dialog(){
-        AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
+        android.support.v7.app.AlertDialog.Builder dialog=new android.support.v7.app.AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
                 .setTitle("提示")
                 .setMessage("您当前用户权限不够!!!!!!");
         dialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
@@ -406,8 +406,8 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
         String url= Constant.SERVER_URL+"/wp-json/users/me";
         AsyncHttpClient client=new AsyncHttpClient();
         RequestParams params=new RequestParams();
-        SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-        client.setBasicAuth(sp.getString("phone",""),sp.getString("passed",""), AuthScope.ANY);
+        SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME, Login_Activity.Mode);
+        client.setBasicAuth(sp.getString("phone", ""), sp.getString("passed", ""), AuthScope.ANY);
         client.get(url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -420,6 +420,7 @@ public class Mine_Fragment extends Fragment implements View.OnClickListener {
             }
         });
     }
+
 
 
 }

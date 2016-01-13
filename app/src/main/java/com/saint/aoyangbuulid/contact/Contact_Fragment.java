@@ -75,11 +75,14 @@ import cz.msebera.android.httpclient.auth.AuthScope;
         final View view=inflater.inflate(R.layout.contact_cepartment_layout, container, false);
 
 
+        getCompanyMember();
+
         loadingDialog=new ProgressDialog(getActivity());
         loadingDialog.setMessage("正在获取最新列表...");
         loadingDialog.setIndeterminate(true);
         loadingDialog.setCancelable(false);
         loadingDialog.show();
+
         view_list= (XListView) view.findViewById(R.id.list_view);
         view_list.setPullLoadEnable(true);
         view_list.setPullRefreshEnable(true);
@@ -119,16 +122,15 @@ import cz.msebera.android.httpclient.auth.AuthScope;
        view_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               ListView list= (ListView) parent;
-               Map<String,Object> map= (Map<String, Object>) list.getItemAtPosition(position);
-               String phonenumber= (String) map.get("phone");
-               Intent intent=new Intent();
+               ListView list = (ListView) parent;
+               Map<String, Object> map = (Map<String, Object>) list.getItemAtPosition(position);
+               String phonenumber = (String) map.get("phone");
+               Intent intent = new Intent();
                intent.setAction("android.intent.action.CALL");
-                intent.setData(Uri.parse("tel:" +phonenumber));
+               intent.setData(Uri.parse("tel:" + phonenumber));
                startActivity(intent);
            }
        });
-        getCompanyMember();
         adapter= new CompanyMember_Adapter(getActivity(),list_right);
         view_list.setAdapter(adapter);
         return view;
@@ -176,12 +178,11 @@ import cz.msebera.android.httpclient.auth.AuthScope;
                     e.printStackTrace();
                 }
                 SharedPreferences sp=getActivity().getSharedPreferences(Login_Activity.PREFERENCE_NAME,Login_Activity.Mode);
-                if (sp.getString("company_name","").equals("")) {
-                    Dialog();
+                if (sp.getString("company_name","").equals("")||sp.getString("company_name","").equals(null)) {
+                    DialogDemo();
                 }
             }
         });
-
     }
     private void onLoad(){
         SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
@@ -191,7 +192,7 @@ import cz.msebera.android.httpclient.auth.AuthScope;
         view_list.setRefreshTime(time);
     }
     private void Dialog(){
-        AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity(),AlertDialog.THEME_HOLO_LIGHT)
+        AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity())
                 .setMessage("您暂时还不属于任何一家公司,赶加入入吧!!!!!")
                 .setCancelable(false)
                 .setTitle("提示");
@@ -204,5 +205,24 @@ import cz.msebera.android.httpclient.auth.AuthScope;
             }
         });
         dialog.create().show();
+
+    }
+
+    private  void  DialogDemo(){
+        android.support.v7.app.AlertDialog.Builder dialog= new android.support.v7.app.AlertDialog.Builder(getActivity())
+                .setMessage("您暂时还不属于任何一家公司,赶加入入吧!!!!!")
+                .setCancelable(false)
+                .setTitle("提示");
+        dialog.setPositiveButton("加入", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(getActivity(), Select_Company_Activity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+                dialog.dismiss();
+            }
+        });
+        dialog.create().show();
+
     }
 }

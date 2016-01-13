@@ -74,9 +74,6 @@ public class News_Fragment extends Fragment {
             }
         }
     };
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container

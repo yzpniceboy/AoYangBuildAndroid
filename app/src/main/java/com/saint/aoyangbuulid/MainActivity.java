@@ -102,10 +102,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         relative_mine.setOnClickListener(this);
         relative_contact.setOnClickListener(this);
 
-
-
-
-
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -171,9 +167,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                             transaction.show(contact);
                         }
 
-
                     break;
-
             }
             transaction.commit();
         }
